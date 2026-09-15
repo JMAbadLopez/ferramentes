@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendari de Dies Moscosos · IES Camp de Morvedre</title>
+  <meta name="description" content="Calendari interactiu de dies de permís per assumptes particulars (dies moscosos) per al professorat de l'IES Camp de Morvedre (Sagunt). Curs 2026-2027 segons normativa GVA.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
+</head>
+<body>
+
+  <!-- Capçalera amb colors i logotip de l'IES Camp de Morvedre -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <div class="header-logo-container">
+          <img id="headerLogoImg" src="" alt="IES Camp de Morvedre" class="header-brand-logo">
+        </div>
+        <div class="header-titles">
+          <h1 data-i18n="appTitle">Calendari de Dies Moscosos</h1>
+          <p data-i18n="appSubtitle">IES Camp de Morvedre · Curs 2026-2027 · Normativa GVA</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="lang-btn active" data-lang="val">Valencià</button>
+        <button type="button" class="lang-btn" data-lang="es">Castellano</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pestanyes de navegació (sense icones duplicades) -->
+  <nav class="nav-tabs-wrapper no-print">
+    <div class="nav-tabs">
+      <button type="button" class="nav-tab active" data-target="panel-calendari">
+        <span class="nav-tab-icon">📅</span> <span class="nav-tab-label" data-i18n="tabCalendar">Calendari Docent</span>
+      </button>
+      <button type="button" class="nav-tab" data-target="panel-sollicitud">
+        <span class="nav-tab-icon">📝</span> <span class="nav-tab-label" data-i18n="tabRequest">Generar Sol·licitud</span>
+      </button>
+      <button type="button" class="nav-tab" data-target="panel-calculadores">
+        <span class="nav-tab-icon">🧮</span> <span class="nav-tab-label" data-i18n="tabCalculators">Calculadores i Terminis</span>
+      </button>
+      <button type="button" class="nav-tab" data-target="panel-normativa">
+        <span class="nav-tab-icon">📖</span> <span class="nav-tab-label" data-i18n="tabNormative">Normativa i FAQ</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Contingut Principal -->
+  <main class="main-container">
+
+    <!-- PESTANYA 1: CALENDARI DOCENT -->
+    <section id="panel-calendari" class="tab-panel active">
+      
+      <!-- Banner informatiu -->
+      <div class="info-banner no-print">
+        <div class="info-banner-content">
+          <div class="info-banner-icon">💡</div>
+          <div class="info-banner-text">
+            <h3 data-i18n="bannerTitle">Permís per assumptes particulars (Instrucció DG Personal Docent)</h3>
+            <p data-i18n="bannerDesc">Fins a 6 dies retribuïts: 3 en període lectiu i 3 en període no lectiu. Antelació mínima: 15 dies naturals.</p>
+          </div>
+        </div>
+        <div class="info-banner-badges">
+          <span class="badge-quota" data-i18n="badgeQuotaText">Quota màxima centre: 5 docents/dia (>81 docents)</span>
+        </div>
+      </div>
+
+      <!-- Llegenda del calendari -->
+      <div class="legend-card no-print">
+        <div class="legend-title" data-i18n="legendTitle">Codi de colors del calendari</div>
+        <div class="legend-items">
+          <div class="legend-item">
+            <div class="legend-color-box disponible"></div>
+            <span data-i18n="legDisponible">Disponible (Lectiu)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box bloquejat"></div>
+            <span data-i18n="legBloquejat">No disponible (Normativa)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box festiu"></div>
+            <span data-i18n="legFestiu">Festiu / Vacances</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box no-lectiu"></div>
+            <span data-i18n="legNoLectiu">No lectiu (3 dies no lectius)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box cap-de-setmana"></div>
+            <span data-i18n="legCapDeSetmana">Cap de setmana</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color-box seleccionat"></div>
+            <span data-i18n="legSeleccionat">El meu dia seleccionat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de controls i filtres -->
+      <div class="calendar-controls no-print">
+        <div class="view-mode-buttons">
+          <button type="button" class="view-mode-btn active" id="viewMonthBtn" data-i18n="viewMonth">Vista mensual</button>
+          <button type="button" class="view-mode-btn" id="viewYearBtn" data-i18n="viewYear">Vista anual completa</button>
+        </div>
+
+        <div class="filter-pills">
+          <button type="button" class="filter-pill active" data-filter="all" data-i18n="filterAll">Tots els dies</button>
+          <button type="button" class="filter-pill" data-filter="disponible" data-i18n="filterAvailable">Només disponibles</button>
+          <button type="button" class="filter-pill" data-filter="no-lectiu" data-i18n="filterNoLectius">Dies no lectius</button>
+          <button type="button" class="filter-pill" data-filter="no-disponible" data-i18n="filterBlocked">Dies bloquejats</button>
+          <button type="button" class="filter-pill" data-filter="festiu" data-i18n="filterHolidays">Festius</button>
+        </div>
+      </div>
+
+      <!-- VISTA MENSUAL -->
+      <div id="monthGridContainer" class="month-view-card">
+        <div class="month-view-header" id="monthNavigationControls">
+          <button type="button" class="month-nav-btn" id="prevMonthBtn" data-i18n="prevMonth">← Mes anterior</button>
+          <h2 class="month-current-title" id="currentMonthTitle">Setembre 2026</h2>
+          <button type="button" class="month-nav-btn" id="nextMonthBtn" data-i18n="nextMonth">Mes següent →</button>
+        </div>
+        <div class="month-calendar-grid">
+          <div class="calendar-weekdays" id="calendarWeekdays"></div>
+          <div class="calendar-days-grid" id="calendarDaysGrid"></div>
+        </div>
+      </div>
+
+      <!-- VISTA ANUAL COMPLETA -->
+      <div id="yearGridContainer" class="year-view-container" style="display: none;"></div>
+
+    </section>
+
+    <!-- PESTANYA 2: GENERAR SOL·LICITUD OFICIAL -->
+    <section id="panel-sollicitud" class="tab-panel">
+      <div class="tool-grid no-print">
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-icon">👤</span>
+            <h3 class="tool-title">Dades del docent sol·licitant</h3>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="docName">Nom i cognoms:</label>
+            <input type="text" id="docName" class="form-input" placeholder="Ex: Maria Garcia Pérez">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="docDni">DNI / NIE:</label>
+            <input type="text" id="docDni" class="form-input" placeholder="Ex: 12345678Z">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="docDept">Departament didàctic:</label>
+            <input type="text" id="docDept" class="form-input" placeholder="Ex: Matemàtiques, Anglés, Tecnologia...">
+          </div>
+          <p style="font-size: 0.8rem; color: var(--gva-text-muted);">
+            * Aquestes dades es guarden de manera privada en el teu navegador i s'insereixen directament a la instància oficial.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-icon">📄</span>
+            <h3 class="tool-title">Opcions de tramitació</h3>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Pots imprimir aquesta instància formal oficial per a lliurar-la a la Secretaria del centre o copiar el text formalitzat per a adjuntar-lo a un correu electrònic a Direcció / Prefectura d'Estudis.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button type="button" class="btn-primary" id="btnPrintDoc">
+              <span>🖨️</span> <span data-i18n="btnPrint">Imprimir / Guardar en PDF</span>
+            </button>
+            <button type="button" class="btn-outline" id="btnCopyDoc">
+              <span>📋</span> <span data-i18n="btnCopyText">Copiar text oficial</span>
+            </button>
+            <div id="copyFeedback" class="alert-box info" style="display: none; margin-top: 0.5rem;" data-i18n="copiedSuccess">
+              Text copiat al porta-retalls amb èxit!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista prèvia de la instància oficial -->
+      <div id="docPreview"></div>
+    </section>
+
+    <!-- PESTANYA 3: CALCULADORES I TERMINIS -->
+    <section id="panel-calculadores" class="tab-panel">
+      <div class="tool-grid">
+        
+        <!-- Calculadora de terminis -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-icon">⏰</span>
+            <h3 class="tool-title" data-i18n="calcTitle1">Calculadora de Finestra de Sol·licitud</h3>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--gva-text-muted); margin-bottom: 1rem;" data-i18n="calcDesc1">
+            Indica el dia que voldries gaudir com a moscós per a saber quan has d'enviar la sol·licitud com a molt tard i quan s'obri el termini.
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="calcTargetDate" data-i18n="lblTargetDate">Data desitjada per al permís:</label>
+            <input type="date" id="calcTargetDate" class="form-input" min="2026-09-01" max="2027-07-31" value="2026-11-16">
+          </div>
+          <div class="result-card" id="calcWinResult">
+            <span style="font-size: 0.85rem; color: #64748b;">Tria una data per a veure els terminis legals d'antelació (mínim 15 dies naturals i màxim 2 mesos).</span>
+          </div>
+        </div>
+
+        <!-- Calculadora de proporcionalitat -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-icon">⚖️</span>
+            <h3 class="tool-title" data-i18n="calcTitle2">Calculadora de Proporcionalitat (Interins / Substitucions)</h3>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--gva-text-muted); margin-bottom: 1rem;" data-i18n="calcDesc2">
+            Si no tens nomenament per a tot el curs escolar complet (1 setembre a 31 agost), calcula quants dies et pertoquen proporcionalment.
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="calcStart" data-i18n="lblStartDate">Data d'inici del nomenament:</label>
+            <input type="date" id="calcStart" class="form-input" value="2026-10-01">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="calcEnd" data-i18n="lblEndDate">Data de finalització del nomenament:</label>
+            <input type="date" id="calcEnd" class="form-input" value="2027-06-30">
+          </div>
+          <button type="button" class="btn-primary" id="btnDoCalcProp" style="width: 100%;" data-i18n="btnCalculateProp">
+            Calcular dies que em pertoquen
+          </button>
+          <div class="result-card" id="propResult" style="margin-top: 1rem;"></div>
+        </div>
+
+      </div>
+
+      <!-- Contingent de plantilla -->
+      <div class="tool-card" style="margin-top: 1.5rem;">
+        <div class="tool-card-header">
+          <span class="tool-icon">👥</span>
+          <h3 class="tool-title" data-i18n="calcTitle3">Taula de Quotes per Plantilla (IES Camp de Morvedre)</h3>
+        </div>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+          La concessió està supeditada a les necessitats del servei educatiu. El nombre màxim de docents en el centre als quals podrà concedir-se aquest permís per a un mateix dia lectiu s'ajusta a l'escala oficial:
+        </p>
+        <table class="quota-table">
+          <thead>
+            <tr>
+              <th>Plantilla docent del centre</th>
+              <th>Màxim simultani de docents per dia lectiu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fins a 20 docents</td>
+              <td>1 docent</td>
+            </tr>
+            <tr>
+              <td>De 21 a 40 docents</td>
+              <td>2 docents</td>
+            </tr>
+            <tr>
+              <td>De 41 a 60 docents</td>
+              <td>3 docents</td>
+            </tr>
+            <tr>
+              <td>De 61 a 80 docents</td>
+              <td>4 docents</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Més de 81 docents (IES Camp de Morvedre)</strong></td>
+              <td><strong>5 docents</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert-box info" style="margin-top: 1rem;">
+          <strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong>
+          <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
+            <li>1r: Preferència per a aquells docents que <strong>no hagen gaudit de cap dia</strong> de permís en el present curs escolar.</li>
+            <li>2n: En cas d'empat, es resoldrà mitjançant <strong>sorteig públic</strong>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- PESTANYA 4: NORMATIVA I FAQ -->
+    <section id="panel-normativa" class="tab-panel">
+      
+      <div class="tool-card" style="margin-bottom: 2rem;">
+        <div class="tool-card-header">
+          <span class="tool-icon">📜</span>
+          <h3 class="tool-title">Resum de la Instrucció de la DG de Personal Docent (GVA)</h3>
+        </div>
+        <div style="font-size: 0.925rem; line-height: 1.7; color: var(--gva-text-main);">
+          <p><strong>1. Concepte i naturalesa:</strong> Permís retribuït per assumptes particulars sense necessitat de justificació. El professorat disposa de fins a <strong>6 dies per curs escolar</strong> (de l'1 de setembre al 31 d'agost de l'any següent), distribuïts en un màxim de <strong>3 dies en període lectiu</strong> i <strong>3 dies en període no lectiu</strong>.</p>
+          <br>
+          <p><strong>2. Retribució:</strong> Els sis dies són amb dret íntegre a retribucions.</p>
+          <br>
+          <p><strong>3. Condició pedagògica inexcusable:</strong> El docent que obtinga aquest permís té l'<strong>obligació d'elaborar i deixar dipositat un pla d'activitats per a l'alumnat</strong> a la Prefectura d'Estudis per a garantir la continuïtat pedagògica.</p>
+          <br>
+          <p><strong>4. Sol·licitud i terminis:</strong> S'ha de presentar davant la Direcció del centre amb una antelació mínima de <strong>15 dies naturals</strong> i una antelació màxima de <strong>dos mesos</strong> respecte a la data sol·licitada.</p>
+          <br>
+          <p><strong>5. Resolució:</strong> Competència exclusiva del Director o Directora de l'institut. El silenci administratiu té caràcter <strong>desestimatori (negatiu)</strong>.</p>
+          <br>
+          <p><strong>6. Prohibicions i exclusions expresses:</strong></p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li>Durant els <strong>15 primers dies lectius</strong> del curs (del 9 al 29 de setembre de 2026).</li>
+            <li>Durant els <strong>15 últims dies lectius</strong> del curs (del 31 de maig al 18 de juny de 2027).</li>
+            <li>En el període de <strong>7 dies abans o després de les vacances</strong> de Nadal, Falles, Pasqua i Sant Joan.</li>
+            <li>En <strong>períodes d'avaluació</strong> escolars, ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
+            <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--brand-black); margin-bottom: 1rem;">
+        Preguntes Freqüents (FAQ)
+      </h3>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Puc ajuntar dos dies moscosos si un és dijous i l'altre divendres?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. La normativa estableix de manera taxativa que <em>"no podran gaudir-se de manera consecutiva"</em>. Tampoc és permés demanar divendres i dilluns consecutius, ja que es consideren dies laborals consecutius.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Puc demanar un moscós lectiu el mes de setembre?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Només a partir del 30 de setembre o 1 d'octubre (sempre que no coincidisca amb les sessions d'avaluació inicial d'ESO i FP). Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Què passa si dos o més companys del mateix departament demanem el mateix dia?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          La concessió està condicionada a les necessitats del servei educatiu. A l'IES Camp de Morvedre el contingent màxim general del centre és de 5 docents al dia. Si hi ha coincidència en un mateix departament que impossibilite l'atenció de l'alumnat, Prefectura i Direcció prioritzaran el docent que no haja gaudit cap dia aquest curs o realitzaran sorteig.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Sóc interí/na i tinc una vacant o substitució temporal. Quants dies em toquen?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          El nombre de dies és estrictament proporcional al temps de servei en el curs escolar. Pots utilitzar la nostra pestanya de <em>Calculadores</em> per a comprovar els teus dies exactes. A més, si cesses i et tornen a nomenar en el mateix curs, conserves els dies pendents de gaudi!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Si no gaste els dies d'aquest curs, els puc acumular per al curs vinent?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. Els dies no gaudits abans de la finalització del curs escolar caduquen i no són acumulables en cap cas.
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modal de Detalls del Dia -->
+  <div id="dayModal" class="modal-overlay no-print">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalDateTitle">Detalls de la data</h3>
+        <button type="button" class="modal-close-btn" id="modalBtnClose">×</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <span id="modalStatusBadge" class="day-detail-status">Disponible</span>
+        </div>
+        <p id="modalDescription" style="font-size: 0.95rem; margin-bottom: 1rem;"></p>
+
+        <div id="modalRestrictionSec" class="modal-section" style="display: none;">
+          <div class="modal-section-title" data-i18n="modalReasonLabel">Motiu de la restricció:</div>
+          <div class="alert-box danger" id="modalRestrictionText"></div>
+        </div>
+
+        <div class="modal-section">
+          <div class="modal-section-title" data-i18n="modalDeadlinesLabel">Terminis legals de sol·licitud:</div>
+          <div class="timeline-card">
+            <div class="timeline-item">
+              <div class="timeline-label" data-i18n="modalEarliestLabel">Apertura (2 mesos abans):</div>
+              <div class="timeline-value" id="modalEarliest">--/--/----</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-label" data-i18n="modalDeadlineLabel">Data límit (15 dies abans):</div>
+              <div class="timeline-value" id="modalDeadline" style="color: #b91c1c;">--/--/----</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-box info" style="margin-top: 1rem; font-size: 0.85rem;">
+          <span data-i18n="modalPlanNotice">Recordatori: És obligatori deixar un pla d'activitats per a l'alumnat a Prefectura d'Estudis.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" id="modalBtnToggle">Afegir a la meua selecció</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra Sticky Inferior de Selecció Personal -->
+  <aside class="selection-bar no-print">
+    <div class="selection-bar-inner">
+      <div>
+        <div class="selection-counts">
+          <div class="count-badge">
+            <span data-i18n="selectionBarTitle">Els meus dies moscosos:</span>
+          </div>
+          <div class="count-badge">
+            <span data-i18n="countLectiusLabel">Lectius:</span>
+            <span class="count-pill lectius" id="countLectius">0 / 3</span>
+          </div>
+          <div class="count-badge">
+            <span data-i18n="countNoLectiusLabel">No lectius:</span>
+            <span class="count-pill no-lectius" id="countNoLectius">0 / 3</span>
+          </div>
+        </div>
+        <div class="selected-dates-chips" id="selectedChips"></div>
+        <div id="selectionAlerts" style="margin-top: 0.5rem;"></div>
+      </div>
+
+      <div class="selection-actions">
+        <button type="button" class="btn-outline" id="btnClearSelection" data-i18n="btnClearSelection">
+          Buidar selecció
+        </button>
+        <button type="button" class="btn-primary" id="btnGoToRequest" data-i18n="btnGenerateDoc">
+          Tramitar Sol·licitud →
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Peu de pàgina -->
+  <footer class="app-footer no-print">
+    <p>IES Camp de Morvedre · Sagunt (València) · Eina desenvolupada per a la planificació docent del curs 2026-2027.</p>
+    <p style="margin-top: 4px; opacity: 0.8;">D'acord amb la normativa i instruccions de la Direcció General de Personal Docent (Conselleria d'Educació, GVA).</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/logo-data.js"></script>
+  <script src="js/calendar-data.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
