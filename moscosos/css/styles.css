@@ -105,14 +105,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  padding: 2px 6px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--gva-border);
+  background: transparent;
+  padding: 0;
+  border: none;
 }
 
 .header-brand-logo {
-  height: 44px;
+  height: 46px;
   width: auto;
   object-fit: contain;
   display: block;

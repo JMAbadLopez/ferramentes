@@ -148,7 +148,7 @@
             <input type="date" id="calcTargetDate" class="form-input" min="2026-09-01" max="2027-07-31" value="2026-11-16">
           </div>
           <div class="result-card" id="calcWinResult">
-            <span style="font-size: 0.85rem; color: #64748b;">Tria una data per a veure els terminis legals d'antelació (mínim 15 dies naturals i màxim 2 mesos).</span>
+            <span style="font-size: 0.85rem; color: #64748b;" data-i18n="calcWinPlaceholder">Tria una data per a veure els terminis legals d'antelació (mínim 15 dies naturals i màxim 2 mesos).</span>
           </div>
         </div>
 
@@ -183,40 +183,40 @@
           <span class="tool-icon">👥</span>
           <h3 class="tool-title" data-i18n="calcTitle3">Taula de Quotes per Plantilla (IES Camp de Morvedre)</h3>
         </div>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;" data-i18n="quotaDesc">
           La concessió està supeditada a les necessitats del servei educatiu. El nombre màxim de docents en el centre als quals podrà concedir-se aquest permís per a un mateix dia lectiu s'ajusta a l'escala oficial:
         </p>
         <table class="quota-table">
           <thead>
             <tr>
-              <th>Plantilla docent del centre</th>
-              <th>Màxim simultani de docents per dia lectiu</th>
+              <th data-i18n="quotaThStaff">Plantilla docent del centre</th>
+              <th data-i18n="quotaThMax">Màxim simultani de docents per dia lectiu</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Fins a 20 docents</td>
-              <td>1 docent</td>
+              <td data-i18n="quotaR1Staff">Fins a 20 docents</td>
+              <td data-i18n="quotaR1Max">1 docent</td>
             </tr>
             <tr>
-              <td>De 21 a 40 docents</td>
-              <td>2 docents</td>
+              <td data-i18n="quotaR2Staff">De 21 a 40 docents</td>
+              <td data-i18n="quotaR2Max">2 docents</td>
             </tr>
             <tr>
-              <td>De 41 a 60 docents</td>
-              <td>3 docents</td>
+              <td data-i18n="quotaR3Staff">De 41 a 60 docents</td>
+              <td data-i18n="quotaR3Max">3 docents</td>
             </tr>
             <tr>
-              <td>De 61 a 80 docents</td>
-              <td>4 docents</td>
+              <td data-i18n="quotaR4Staff">De 61 a 80 docents</td>
+              <td data-i18n="quotaR4Max">4 docents</td>
             </tr>
             <tr class="highlight">
-              <td><strong>Més de 81 docents (IES Camp de Morvedre)</strong></td>
-              <td><strong>5 docents</strong></td>
+              <td data-i18n-html="quotaR5Staff"><strong>Més de 81 docents (IES Camp de Morvedre)</strong></td>
+              <td data-i18n-html="quotaR5Max"><strong>5 docents</strong></td>
             </tr>
           </tbody>
         </table>
-        <div class="alert-box info" style="margin-top: 1rem;">
+        <div class="alert-box info" style="margin-top: 1rem;" data-i18n-html="quotaCriteria">
           <strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong>
           <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
             <li>1r: Preferència per a aquells docents que <strong>no hagen gaudit de cap dia</strong> de permís en el present curs escolar.</li>
@@ -232,9 +232,9 @@
       <div class="tool-card" style="margin-bottom: 2rem;">
         <div class="tool-card-header">
           <span class="tool-icon">📜</span>
-          <h3 class="tool-title">Resum de la Instrucció de la DG de Personal Docent (GVA)</h3>
+          <h3 class="tool-title" data-i18n="normativeSummaryTitle">Resum de la Instrucció de la DG de Personal Docent (GVA)</h3>
         </div>
-        <div style="font-size: 0.925rem; line-height: 1.7; color: var(--gva-text-main);">
+        <div style="font-size: 0.925rem; line-height: 1.7; color: var(--gva-text-main);" data-i18n-html="normativeSummaryBody">
           <p><strong>1. Concepte i naturalesa:</strong> Permís retribuït per assumptes particulars sense necessitat de justificació. El professorat disposa de fins a <strong>6 dies per curs escolar</strong> (de l'1 de setembre al 31 d'agost de l'any següent), distribuïts en un màxim de <strong>3 dies en període lectiu</strong> i <strong>3 dies en període no lectiu</strong>.</p>
           <br>
           <p><strong>2. Retribució:</strong> Els sis dies són amb dret íntegre a retribucions.</p>
@@ -256,66 +256,66 @@
         </div>
       </div>
 
-      <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--brand-black); margin-bottom: 1rem;">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--brand-black); margin-bottom: 1rem;" data-i18n="faqSectionTitle">
         Preguntes Freqüents (FAQ)
       </h3>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Puc ajuntar dos dies moscosos si un és dijous i l'altre divendres?</span>
+          <span data-i18n="faqQ1">Puc ajuntar dos dies moscosos si un és dijous i l'altre divendres?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA1">
           No. La normativa estableix de manera taxativa que <em>"no podran gaudir-se de manera consecutiva"</em>. Tampoc és permés demanar divendres i dilluns consecutius, ja que es consideren dies laborals consecutius.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Per què hi ha dies bloquejats diferents entre FP i ESO/Batxillerat?</span>
+          <span data-i18n="faqQ2">Per què hi ha dies bloquejats diferents entre FP i ESO/Batxillerat?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA2">
           Perquè la normativa de la Conselleria d'Educació prohibeix expressament gaudir de dies moscosos durant els períodes d'avaluacions. Com que les dates de les sessions d'avaluació inicial, 1a, 2a, final i extraordinària dels Cicles Formatius (FPB, Grau Mitjà, Grau Superior, Cursos d'Especialització) no coincideixen exactament amb les d'ESO i Batxillerat, hem incorporat el calendari oficial específic d'avaluacions de l'IES Camp de Morvedre perquè pugues consultar amb total precisió els teus dies hàbils segons les teues etapes educatives.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Puc demanar un moscós lectiu el mes de setembre?</span>
+          <span data-i18n="faqQ3">Puc demanar un moscós lectiu el mes de setembre?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA3">
           Només a partir del 30 de setembre. Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Què passa si dos o més companys del mateix departament demanem el mateix dia?</span>
+          <span data-i18n="faqQ4">Què passa si dos o més companys del mateix departament demanem el mateix dia?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA4">
           La concessió està condicionada a les necessitats del servei educatiu. A l'IES Camp de Morvedre el contingent màxim general del centre és de 5 docents al dia. Si hi ha coincidència en un mateix departament que impossibilite l'atenció de l'alumnat, Prefectura i Direcció prioritzaran el docent que no haja gaudit cap dia aquest curs o realitzaran sorteig.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Sóc interí/na i tinc una vacant o substitució temporal. Quants dies em toquen?</span>
+          <span data-i18n="faqQ5">Sóc interí/na i tinc una vacant o substitució temporal. Quants dies em toquen?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA5">
           El nombre de dies és estrictament proporcional al temps de servei en el curs escolar. Pots utilitzar la nostra pestanya de <em>Calculadores</em> per a comprovar els teus dies exactes. A més, si cesses i et tornen a nomenar en el mateix curs, conserves els dies pendents de gaudi!
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question">
-          <span>Si no gaste els dies d'aquest curs, els puc acumular per al curs vinent?</span>
+          <span data-i18n="faqQ6">Si no gaste els dies d'aquest curs, els puc acumular per al curs vinent?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n-html="faqA6">
           No. Els dies no gaudits abans de la finalització del curs escolar caduquen i no són acumulables en cap cas.
         </div>
       </div>
@@ -397,8 +397,8 @@
 
   <!-- Peu de pàgina -->
   <footer class="app-footer no-print">
-    <p>IES Camp de Morvedre · Sagunt (València) · Eina desenvolupada per a la planificació docent del curs 2026-2027.</p>
-    <p style="margin-top: 4px; opacity: 0.8;">D'acord amb la normativa i instruccions de la Direcció General de Personal Docent (Conselleria d'Educació, GVA).</p>
+    <p data-i18n="footerText1">IES Camp de Morvedre · Sagunt (València) · Eina desenvolupada per a la planificació docent del curs 2026-2027.</p>
+    <p style="margin-top: 4px; opacity: 0.8;" data-i18n="footerText2">D'acord amb la normativa i instruccions de la Direcció General de Personal Docent (Conselleria d'Educació, GVA).</p>
   </footer>
 
   <!-- Scripts -->
