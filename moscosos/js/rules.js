@@ -152,7 +152,7 @@ window.MOSCOSO_RULES = {
   /**
    * Valida un conjunt de dies seleccionats per un docent
    */
-  validateSelection: function(selectedDates) {
+  validateSelection: function(selectedDates, profile = "eso_bat") {
     const errors = [];
     const warnings = [];
 
@@ -165,7 +165,14 @@ window.MOSCOSO_RULES = {
     // 1. Comptatge i comprovació d'estat
     const calDataObj = (typeof window !== "undefined" ? window.CALENDAR_DATA_2026_2027 : (typeof global !== "undefined" ? global.CALENDAR_DATA_2026_2027 : null));
     for (const dateStr of sorted) {
-      const dayData = (calDataObj && calDataObj.days) ? calDataObj.days[dateStr] : null;
+      let dayData = null;
+      if (calDataObj) {
+        if (typeof calDataObj.getDayDataForProfile === "function") {
+          dayData = calDataObj.getDayDataForProfile(dateStr, profile);
+        } else if (calDataObj.days) {
+          dayData = calDataObj.days[dateStr];
+        }
+      }
       if (!dayData) continue;
 
       if (dayData.status === "disponible") {

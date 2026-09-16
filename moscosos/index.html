@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendari de Dies Moscosos · IES Camp de Morvedre</title>
-  <meta name="description" content="Calendari interactiu de dies de permís per assumptes particulars (dies moscosos) per al professorat de l'IES Camp de Morvedre (Sagunt). Curs 2026-2027 segons normativa GVA.">
+  <meta name="description" content="Calendari interactiu anual de dies de permís per assumptes particulars (dies moscosos) per al professorat de l'IES Camp de Morvedre (Sagunt). Curs 2026-2027 amb avaluacions específiques per a FP i ESO/Batxillerat segons normativa GVA.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
 </head>
 <body>
 
-  <!-- Capçalera amb colors i logotip de l'IES Camp de Morvedre -->
+  <!-- Capçalera amb colors i logotip oficial de l'IES Camp de Morvedre -->
   <header class="app-header">
     <div class="header-container">
       <div class="header-brand">
@@ -29,14 +29,11 @@
     </div>
   </header>
 
-  <!-- Pestanyes de navegació (sense icones duplicades) -->
+  <!-- Pestanyes de navegació -->
   <nav class="nav-tabs-wrapper no-print">
     <div class="nav-tabs">
       <button type="button" class="nav-tab active" data-target="panel-calendari">
-        <span class="nav-tab-icon">📅</span> <span class="nav-tab-label" data-i18n="tabCalendar">Calendari Docent</span>
-      </button>
-      <button type="button" class="nav-tab" data-target="panel-sollicitud">
-        <span class="nav-tab-icon">📝</span> <span class="nav-tab-label" data-i18n="tabRequest">Generar Sol·licitud</span>
+        <span class="nav-tab-icon">📅</span> <span class="nav-tab-label" data-i18n="tabCalendar">Calendari Anual Docent</span>
       </button>
       <button type="button" class="nav-tab" data-target="panel-calculadores">
         <span class="nav-tab-icon">🧮</span> <span class="nav-tab-label" data-i18n="tabCalculators">Calculadores i Terminis</span>
@@ -50,9 +47,28 @@
   <!-- Contingut Principal -->
   <main class="main-container">
 
-    <!-- PESTANYA 1: CALENDARI DOCENT -->
+    <!-- PESTANYA 1: CALENDARI ANUAL DOCENT -->
     <section id="panel-calendari" class="tab-panel active">
       
+      <!-- Selector de Perfil Docent (FP vs ESO / Batxillerat) -->
+      <div class="profile-selector-card no-print">
+        <div class="profile-selector-title">
+          <span style="font-size: 1.5rem;">👥</span>
+          <div>
+            <h3 data-i18n="profileTitle">Perfil docent seleccionat:</h3>
+            <p data-i18n="profileSubtitle">Aplica el calendari d'avaluacions oficial de l'IES Camp de Morvedre:</p>
+          </div>
+        </div>
+        <div class="profile-buttons">
+          <button type="button" class="profile-btn active" data-profile="eso_bat">
+            <span data-i18n="profileEsoBat">🎓 ESO i Batxillerat</span>
+          </button>
+          <button type="button" class="profile-btn" data-profile="fp">
+            <span data-i18n="profileFp">⚙️ Formació Professional (FP)</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Banner informatiu -->
       <div class="info-banner no-print">
         <div class="info-banner-content">
@@ -69,7 +85,7 @@
 
       <!-- Llegenda del calendari -->
       <div class="legend-card no-print">
-        <div class="legend-title" data-i18n="legendTitle">Codi de colors del calendari</div>
+        <div class="legend-title" data-i18n="legendTitle">Codi de colors del calendari anual</div>
         <div class="legend-items">
           <div class="legend-item">
             <div class="legend-color-box disponible"></div>
@@ -77,7 +93,7 @@
           </div>
           <div class="legend-item">
             <div class="legend-color-box bloquejat"></div>
-            <span data-i18n="legBloquejat">No disponible (Normativa)</span>
+            <span data-i18n="legBloquejat">No disponible (Normativa / Avaluacions)</span>
           </div>
           <div class="legend-item">
             <div class="legend-color-box festiu"></div>
@@ -98,13 +114,8 @@
         </div>
       </div>
 
-      <!-- Barra de controls i filtres -->
+      <!-- Barra de filtres ràpids -->
       <div class="calendar-controls no-print">
-        <div class="view-mode-buttons">
-          <button type="button" class="view-mode-btn active" id="viewMonthBtn" data-i18n="viewMonth">Vista mensual</button>
-          <button type="button" class="view-mode-btn" id="viewYearBtn" data-i18n="viewYear">Vista anual completa</button>
-        </div>
-
         <div class="filter-pills">
           <button type="button" class="filter-pill active" data-filter="all" data-i18n="filterAll">Tots els dies</button>
           <button type="button" class="filter-pill" data-filter="disponible" data-i18n="filterAvailable">Només disponibles</button>
@@ -114,76 +125,12 @@
         </div>
       </div>
 
-      <!-- VISTA MENSUAL -->
-      <div id="monthGridContainer" class="month-view-card">
-        <div class="month-view-header" id="monthNavigationControls">
-          <button type="button" class="month-nav-btn" id="prevMonthBtn" data-i18n="prevMonth">← Mes anterior</button>
-          <h2 class="month-current-title" id="currentMonthTitle">Setembre 2026</h2>
-          <button type="button" class="month-nav-btn" id="nextMonthBtn" data-i18n="nextMonth">Mes següent →</button>
-        </div>
-        <div class="month-calendar-grid">
-          <div class="calendar-weekdays" id="calendarWeekdays"></div>
-          <div class="calendar-days-grid" id="calendarDaysGrid"></div>
-        </div>
-      </div>
-
-      <!-- VISTA ANUAL COMPLETA -->
-      <div id="yearGridContainer" class="year-view-container" style="display: none;"></div>
+      <!-- VISTA ANUAL COMPLETA (TOTS ELS MESOS) -->
+      <div id="yearGridContainer" class="year-view-container"></div>
 
     </section>
 
-    <!-- PESTANYA 2: GENERAR SOL·LICITUD OFICIAL -->
-    <section id="panel-sollicitud" class="tab-panel">
-      <div class="tool-grid no-print">
-        <div class="tool-card">
-          <div class="tool-card-header">
-            <span class="tool-icon">👤</span>
-            <h3 class="tool-title">Dades del docent sol·licitant</h3>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="docName">Nom i cognoms:</label>
-            <input type="text" id="docName" class="form-input" placeholder="Ex: Maria Garcia Pérez">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="docDni">DNI / NIE:</label>
-            <input type="text" id="docDni" class="form-input" placeholder="Ex: 12345678Z">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="docDept">Departament didàctic:</label>
-            <input type="text" id="docDept" class="form-input" placeholder="Ex: Matemàtiques, Anglés, Tecnologia...">
-          </div>
-          <p style="font-size: 0.8rem; color: var(--gva-text-muted);">
-            * Aquestes dades es guarden de manera privada en el teu navegador i s'insereixen directament a la instància oficial.
-          </p>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-card-header">
-            <span class="tool-icon">📄</span>
-            <h3 class="tool-title">Opcions de tramitació</h3>
-          </div>
-          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.25rem;">
-            Pots imprimir aquesta instància formal oficial per a lliurar-la a la Secretaria del centre o copiar el text formalitzat per a adjuntar-lo a un correu electrònic a Direcció / Prefectura d'Estudis.
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <button type="button" class="btn-primary" id="btnPrintDoc">
-              <span>🖨️</span> <span data-i18n="btnPrint">Imprimir / Guardar en PDF</span>
-            </button>
-            <button type="button" class="btn-outline" id="btnCopyDoc">
-              <span>📋</span> <span data-i18n="btnCopyText">Copiar text oficial</span>
-            </button>
-            <div id="copyFeedback" class="alert-box info" style="display: none; margin-top: 0.5rem;" data-i18n="copiedSuccess">
-              Text copiat al porta-retalls amb èxit!
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vista prèvia de la instància oficial -->
-      <div id="docPreview"></div>
-    </section>
-
-    <!-- PESTANYA 3: CALCULADORES I TERMINIS -->
+    <!-- PESTANYA 2: CALCULADORES I TERMINIS -->
     <section id="panel-calculadores" class="tab-panel">
       <div class="tool-grid">
         
@@ -279,7 +226,7 @@
       </div>
     </section>
 
-    <!-- PESTANYA 4: NORMATIVA I FAQ -->
+    <!-- PESTANYA 3: NORMATIVA I FAQ -->
     <section id="panel-normativa" class="tab-panel">
       
       <div class="tool-card" style="margin-bottom: 2rem;">
@@ -303,7 +250,7 @@
             <li>Durant els <strong>15 primers dies lectius</strong> del curs (del 9 al 29 de setembre de 2026).</li>
             <li>Durant els <strong>15 últims dies lectius</strong> del curs (del 31 de maig al 18 de juny de 2027).</li>
             <li>En el període de <strong>7 dies abans o després de les vacances</strong> de Nadal, Falles, Pasqua i Sant Joan.</li>
-            <li>En <strong>períodes d'avaluació</strong> escolars, ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
+            <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions del centre per a FP o ESO/Batxillerat), ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
             <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
           </ul>
         </div>
@@ -325,11 +272,21 @@
 
       <div class="faq-item">
         <button type="button" class="faq-question">
+          <span>Per què hi ha dies bloquejats diferents entre FP i ESO/Batxillerat?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Perquè la normativa de la Conselleria d'Educació prohibeix expressament gaudir de dies moscosos durant els períodes d'avaluacions. Com que les dates de les sessions d'avaluació inicial, 1a, 2a, final i extraordinària dels Cicles Formatius (FPB, Grau Mitjà, Grau Superior, Cursos d'Especialització) no coincideixen exactament amb les d'ESO i Batxillerat, hem incorporat el calendari oficial específic d'avaluacions de l'IES Camp de Morvedre perquè pugues consultar amb total precisió els teus dies hàbils segons les teues etapes educatives.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
           <span>Puc demanar un moscós lectiu el mes de setembre?</span>
           <span class="faq-toggle-icon">+</span>
         </button>
         <div class="faq-answer">
-          Només a partir del 30 de setembre o 1 d'octubre (sempre que no coincidisca amb les sessions d'avaluació inicial d'ESO i FP). Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.
+          Només a partir del 30 de setembre. Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.
         </div>
       </div>
 
@@ -433,9 +390,6 @@
       <div class="selection-actions">
         <button type="button" class="btn-outline" id="btnClearSelection" data-i18n="btnClearSelection">
           Buidar selecció
-        </button>
-        <button type="button" class="btn-primary" id="btnGoToRequest" data-i18n="btnGenerateDoc">
-          Tramitar Sol·licitud →
         </button>
       </div>
     </div>

@@ -42,7 +42,7 @@
   --color-no-lectiu-bg: #fffbeb;
   --color-no-lectiu-border: #fcd34d;
 
-  --color-weekend: #475569;
+  --color-weekend: #64748b;
   --color-weekend-bg: #f1f5f9;
   --color-weekend-border: #cbd5e1;
 
@@ -53,7 +53,7 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 0 3px rgba(116, 197, 195, 0.35);
+  --shadow-glow: 0 0 0 3px rgba(116, 197, 195, 0.4);
 }
 
 * {
@@ -86,7 +86,7 @@ body {
 }
 
 .header-container {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -171,7 +171,7 @@ body {
 }
 
 .nav-tabs {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   overflow-x: auto;
@@ -230,9 +230,76 @@ body {
 
 /* Main container */
 .main-container {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 1.5rem auto;
-  padding: 0 1rem 4rem 1rem;
+  padding: 0 1rem 5rem 1rem;
+}
+
+/* ==========================================================================
+   Selector de Perfil Docent (FP vs ESO i Batxillerat)
+   ========================================================================== */
+.profile-selector-card {
+  background: #ffffff;
+  border: 1px solid var(--gva-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-selector-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profile-selector-title h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.profile-selector-title p {
+  font-size: 0.8rem;
+  color: var(--gva-text-muted);
+}
+
+.profile-buttons {
+  display: flex;
+  background: #f1f5f9;
+  padding: 0.3rem;
+  border-radius: var(--radius-sm);
+  gap: 0.3rem;
+}
+
+.profile-btn {
+  padding: 0.55rem 1.15rem;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gva-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.profile-btn:hover {
+  color: var(--brand-dark);
+}
+
+.profile-btn.active {
+  background: var(--brand-dark);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
 }
 
 /* Info Banner */
@@ -241,7 +308,7 @@ body {
   border-left: 4px solid var(--brand-teal);
   border-radius: var(--radius-md);
   padding: 1.15rem 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-wrap: wrap;
@@ -295,7 +362,7 @@ body {
   background: #ffffff;
   border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--gva-border);
 }
@@ -347,31 +414,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.view-mode-buttons {
-  display: flex;
-  background: #ffffff;
-  padding: 0.25rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--gva-border);
-}
-
-.view-mode-btn {
-  padding: 0.45rem 0.95rem;
-  border: none;
-  background: none;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--gva-text-muted);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.view-mode-btn.active {
-  background: var(--brand-dark);
-  color: #ffffff;
-}
-
 .filter-pills {
   display: flex;
   flex-wrap: wrap;
@@ -401,202 +443,12 @@ body {
   color: #ffffff;
 }
 
-/* Month Detailed View */
-.month-view-card {
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--gva-border);
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.month-view-header {
-  background: #ffffff;
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #f1f5f9;
-}
-
-.month-nav-btn {
-  background: #ffffff;
-  border: 1px solid var(--gva-border);
-  border-radius: var(--radius-sm);
-  padding: 0.5rem 0.9rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--brand-dark);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: all 0.2s ease;
-}
-
-.month-nav-btn:hover:not(:disabled) {
-  background: var(--brand-teal);
-  color: var(--brand-black);
-  border-color: var(--brand-teal);
-}
-
-.month-nav-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.month-current-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--brand-black);
-  text-align: center;
-}
-
-.month-calendar-grid {
-  padding: 1.25rem;
-}
-
-.calendar-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: var(--gva-text-muted);
-  text-transform: uppercase;
-}
-
-.calendar-days-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-}
-
-.calendar-cell {
-  min-height: 86px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--gva-border);
-  padding: 0.45rem 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.calendar-cell:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  z-index: 5;
-}
-
-.calendar-cell.empty {
-  min-height: 86px;
-  background: transparent;
-  border: none;
-  cursor: default;
-}
-
-.calendar-cell.empty:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.cell-day-number {
-  font-size: 1.05rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.cell-badge {
-  font-size: 0.675rem;
-  font-weight: 700;
-  padding: 0.15rem 0.35rem;
-  border-radius: 4px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Colors of cells */
-.calendar-cell.disponible {
-  background-color: var(--color-disponible-bg);
-  border-color: var(--color-disponible-border);
-  color: #065f46;
-}
-.calendar-cell.disponible .cell-badge {
-  background-color: #d1fae5;
-  color: #047857;
-}
-
-.calendar-cell.no-disponible {
-  background-color: var(--color-bloquejat-bg);
-  border-color: var(--color-bloquejat-border);
-  color: #991b1b;
-}
-.calendar-cell.no-disponible .cell-badge {
-  background-color: #fee2e2;
-  color: #b91c1c;
-}
-
-.calendar-cell.festiu {
-  background-color: var(--color-festiu-bg);
-  border-color: var(--color-festiu-border);
-  color: #1e40af;
-}
-.calendar-cell.festiu .cell-badge {
-  background-color: #dbeafe;
-  color: #1d4ed8;
-}
-
-.calendar-cell.no-lectiu {
-  background-color: var(--color-no-lectiu-bg);
-  border-color: var(--color-no-lectiu-border);
-  color: #92400e;
-}
-.calendar-cell.no-lectiu .cell-badge {
-  background-color: #fef3c7;
-  color: #b45309;
-}
-
-.calendar-cell.cap-de-setmana {
-  background-color: var(--color-weekend-bg);
-  border-color: var(--color-weekend-border);
-  color: #64748b;
-  opacity: 0.75;
-}
-
-/* Selected state */
-.calendar-cell.selected {
-  outline: 3px solid var(--brand-teal);
-  box-shadow: 0 0 12px rgba(116, 197, 195, 0.5);
-}
-.calendar-cell.selected::after {
-  content: "✓";
-  position: absolute;
-  top: 4px;
-  right: 6px;
-  background: var(--brand-dark);
-  color: var(--brand-teal);
-  font-size: 0.75rem;
-  font-weight: 800;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Annual View Grid */
+/* ==========================================================================
+   VISTA ANUAL COMPLETA (EXCLUSIVA I PROTAGONISTA)
+   ========================================================================== */
 .year-view-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -606,26 +458,34 @@ body {
   border-radius: var(--radius-md);
   border: 1px solid var(--gva-border);
   box-shadow: var(--shadow-sm);
-  padding: 1rem;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mini-month-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-teal-border);
 }
 
 .mini-month-title {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: var(--brand-black);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   text-align: center;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.45rem;
   border-bottom: 2px solid var(--brand-teal-light);
 }
 
 .mini-calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
-  margin-bottom: 4px;
+  gap: 4px;
+  margin-bottom: 6px;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   color: var(--gva-text-muted);
 }
@@ -633,41 +493,74 @@ body {
 .mini-calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 3px;
+  gap: 4px;
 }
 
 .mini-day-cell {
-  aspect-ratio: 1;
+  min-height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: 0.825rem;
   font-weight: 700;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
   border: 1px solid transparent;
+  position: relative;
 }
 
-.mini-day-cell:hover {
-  transform: scale(1.15);
-  z-index: 2;
-  box-shadow: var(--shadow-sm);
+.mini-day-cell:hover:not(.empty) {
+  transform: scale(1.18);
+  z-index: 10;
+  box-shadow: var(--shadow-md);
 }
 
 .mini-day-cell.empty {
   cursor: default;
 }
-.mini-day-cell.empty:hover {
-  transform: none;
+
+/* Colors cel·les anuals */
+.mini-day-cell.disponible { 
+  background-color: var(--color-disponible-bg); 
+  color: #065f46; 
+  border-color: var(--color-disponible-border); 
+}
+.mini-day-cell.no-disponible { 
+  background-color: var(--color-bloquejat-bg); 
+  color: #991b1b; 
+  border-color: var(--color-bloquejat-border); 
+}
+.mini-day-cell.festiu { 
+  background-color: var(--color-festiu-bg); 
+  color: #1e40af; 
+  border-color: var(--color-festiu-border); 
+}
+.mini-day-cell.no-lectiu { 
+  background-color: var(--color-no-lectiu-bg); 
+  color: #92400e; 
+  border-color: var(--color-no-lectiu-border); 
+}
+.mini-day-cell.cap-de-setmana { 
+  background-color: var(--color-weekend-bg); 
+  color: var(--color-weekend); 
+  opacity: 0.85;
 }
 
-.mini-day-cell.disponible { background-color: #d1fae5; color: #065f46; border-color: #a7f3d0; }
-.mini-day-cell.no-disponible { background-color: #fee2e2; color: #991b1b; border-color: #fca5a5; }
-.mini-day-cell.festiu { background-color: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
-.mini-day-cell.no-lectiu { background-color: #fef3c7; color: #92400e; border-color: #fde68a; }
-.mini-day-cell.cap-de-setmana { background-color: #f1f5f9; color: #94a3b8; }
-.mini-day-cell.selected { outline: 2px solid var(--brand-teal); font-weight: 900; }
+.mini-day-cell.selected { 
+  outline: 3px solid var(--brand-teal); 
+  font-weight: 900;
+  box-shadow: var(--shadow-glow);
+}
+.mini-day-cell.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--brand-teal-dark);
+}
 
 /* Sticky Selection Bar */
 .selection-bar {
@@ -683,7 +576,7 @@ body {
 }
 
 .selection-bar-inner {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -1000,64 +893,6 @@ body {
   margin-top: 1rem;
 }
 
-/* Document Oficial per a Imprimir (Instància) */
-.official-doc-wrapper {
-  background: #ffffff;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--gva-border);
-  box-shadow: var(--shadow-md);
-  padding: 2.5rem;
-  max-width: 860px;
-  margin: 0 auto 2.5rem auto;
-}
-
-.doc-header-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 2rem;
-  border: 2px solid #000000;
-}
-
-.doc-header-table td {
-  padding: 0.75rem;
-  border: 1px solid #000000;
-}
-
-.doc-section {
-  margin-bottom: 1.5rem;
-}
-
-.doc-section-title {
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.doc-body-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-align: justify;
-  margin-bottom: 1.25rem;
-}
-
-.doc-signature-area {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  text-align: center;
-}
-
-.signature-box {
-  border-top: 1px solid #000000;
-  padding-top: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
 /* FAQ Accordion */
 .faq-item {
   background: #ffffff;
@@ -1135,54 +970,17 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .header-titles h1 { font-size: 1.1rem; }
-  .calendar-weekdays { font-size: 0.7rem; }
-  .calendar-cell { min-height: 64px; padding: 0.25rem; }
-  .cell-day-number { font-size: 0.85rem; }
-  .cell-badge { font-size: 0.55rem; padding: 0.1rem; }
-  .official-doc-wrapper { padding: 1.25rem; }
+  .profile-selector-card { flex-direction: column; align-items: stretch; }
+  .profile-buttons { width: 100%; }
+  .profile-btn { flex: 1; justify-content: center; }
+  .year-view-container { grid-template-columns: 1fr; }
   .timeline-card { grid-template-columns: 1fr; }
   .selection-bar-inner { flex-direction: column; align-items: stretch; }
   .selection-counts { justify-content: space-around; }
 }
 
-/* ==========================================================================
-   ESTILS D'IMPRESSIÓ (@media print)
-   ========================================================================== */
 @media print {
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
-    font-size: 11pt;
-  }
-
-  .app-header,
-  .nav-tabs-wrapper,
-  .info-banner,
-  .legend-card,
-  .calendar-controls,
-  .selection-bar,
-  .modal-overlay,
-  .tool-grid,
-  .no-print,
-  .app-footer {
-    display: none !important;
-  }
-
-  .main-container {
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .official-doc-wrapper {
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-  }
-
-  .official-doc-wrapper * {
-    color: #000000 !important;
-  }
+  body { background: #ffffff !important; color: #000000 !important; font-size: 10pt; }
+  .app-header, .nav-tabs-wrapper, .info-banner, .legend-card, .calendar-controls, .profile-selector-card, .selection-bar, .modal-overlay, .tool-grid, .app-footer { display: none !important; }
+  .year-view-container { grid-template-columns: repeat(3, 1fr) !important; gap: 10px !important; }
 }
