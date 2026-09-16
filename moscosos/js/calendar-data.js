@@ -81,7 +81,6 @@ window.CALENDAR_DATA_2026_2027 = {
       "2026-10-05": { title: "Avaluació Inicial CF Presencial", desc: "Avaluació Inicial Cicles Formatius Presencial." },
       "2026-10-06": { title: "Avaluació Inicial CF Presencial", desc: "Avaluació Inicial Cicles Formatius Presencial." },
       "2026-10-07": { title: "Avaluació Inicial CF Presencial / Semipresencial", desc: "Avaluació Inicial Cicles Formatius Presencial i Semipresencial." },
-      "2026-10-08": { title: "Avaluació Inicial CF Semipresencial", desc: "Avaluació Inicial Cicles Formatius Semipresencial." },
 
       // 1a Avaluació
       "2026-11-30": { title: "1a Av. CF 2n GM/GS", desc: "1a Avaluació 2n Curs Grau Mitjà i Grau Superior." },

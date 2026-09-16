@@ -1,17 +1,17 @@
 # Calendari de Dies Moscosos · IES CAMP DE MORVEDRE (Curs 2026-2027)
 
-Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IES Camp de Morvedre** (Sagunt / Port de Sagunt) la planificació i sol·licitud dels seus dies de permís per assumptes particulars ("dies moscosos"), d'acord amb la normativa de la **Conselleria d'Educació de la Generalitat Valenciana (GVA)** i les instruccions de la Direcció General de Personal Docent.
+Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IES Camp de Morvedre** (Sagunt / Port de Sagunt) la planificació dels seus dies de permís per assumptes particulars ("dies moscosos"), d'acord amb la normativa de la **Conselleria d'Educació de la Generalitat Valenciana (GVA)** (Instrucció 1/2026 de la DG de Personal Docent) i el calendari oficial d'avaluacions del centre.
 
 ---
 
 ## 📌 Característiques Principals
 
-1. **Calendari Docent Interactiu (Curs 2026-2027)**:
-   - **Vista mensual detallada** amb navegació de mesos i dies de la setmana.
-   - **Vista anual completa** per a una visió panoràmica de tot el curs.
+1. **Calendari Anual Docent (Curs 2026-2027)**:
+   - **Vista anual completa i neta**: Els 10 mesos del curs escolar a la vista (setembre a juny/juliol), adaptable a qualsevol pantalla (ordinador, tauleta o mòbil).
+   - **Separació de perfils docents**: Commuta entre `🎓 ESO i Batxillerat` i `⚙️ Formació Professional (FP)`. Les dates d'avaluació inicial, 1a, 2a, final i extraordinàries s'adapten fidelment al calendari oficial de l'IES Camp de Morvedre.
    - **Codi de colors semàfor**:
      - 🟢 **Verd**: Dia lectiu disponible per a demanar moscós lectiu.
-     - 🔴 **Roig**: Dia bloquejat per normativa (15 primers/últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles, Pasqua i Sant Joan, sessions d'avaluació).
+     - 🔴 **Roig**: Dia bloquejat per normativa (15 primers/últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles, Pasqua i Sant Joan, sessions d'avaluació segons perfil).
      - 🔵 **Blau**: Festius oficials (Festius locals de Sagunt: 7 Desembre, 17 i 18 Març; festius autonòmics i nacionals).
      - 🟡 **Taronja/Groc**: Períodes no lectius laborals (vàlids per als 3 dies no lectius).
      - ⚫ **Gris**: Caps de setmana.
@@ -19,42 +19,50 @@ Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IE
 
 2. **Detall i Inspector de Dia (Modal)**:
    - En fer clic a qualsevol dia s'obri un panell amb l'explicació detallada.
-   - Si està bloquejat, especifica el motiu exacte de la normativa GVA.
+   - Si està bloquejat, especifica el motiu exacte de la normativa GVA o avaluació.
    - Mostra la **finestra legal de tramitació** (obertura 2 mesos abans i data límit recomanada 15 dies naturals abans).
    - Botó per afegir o eliminar de la selecció personal.
 
 3. **Planificador Personal i Comprovació en Temps Real**:
    - Barra flotant persistent que compta els dies triats (Lectius: fins a 3, No lectius: fins a 3).
    - **Detecció automàtica d'infraccions**:
-     - Avisa si s'intenten agafar dies consecutius (prohibit per normativa).
+     - Avisa si s'intenten agafar dies consecutius (prohibit per normativa, incloent divendres i dilluns).
      - Avisa si se superen els 3 dies màxims.
      - Avisa si falten menys de 15 dies naturals respecte a la data sol·licitada.
-   - Les dates es guarden automàticament al teu dispositiu (`localStorage`).
+   - Les preferències es guarden automàticament de manera resilient (`safeStorage`).
 
-4. **Generador de la Instància Oficial per a Direcció**:
-   - Genera el document formal oficial adaptat per a l'IES Camp de Morvedre amb el format de la Generalitat Valenciana.
-   - Inclou la declaració responsable de dipòsit del pla d'activitats pedagògiques per a l'alumnat a Prefectura d'Estudis.
-   - Botó per a **Imprimir o guardar directament en PDF** (amb estils nets d'impressió oficial A4).
-   - Botó per a **Copiar el text** per a correus o tràmits telemàtics.
+4. **Regles de Quota del Centre i Distribució per Torns**:
+   - **Quota torn de matí**: Màxim **5 docents al dia** (>81 docents en plantilla).
+   - **Quota torn de vesprada (FP)**: Màxim **2 docents al dia** per a garantir la cobertura dels cicles formatius vespertins.
+   - **Quota total del centre**: Màxim conjunt de **7 docents al dia** (5 de matí + 2 de vesprada).
+   - Criteris de prelació en cas de concurrència: preferència a qui no n'haja gaudit cap dia > sorteig públic.
 
 5. **Calculadores Específiques**:
-   - **Calculadora de terminis**: Tria qualsevol data i obtén la data límit i data d'obertura.
+   - **Calculadora de terminis**: Tria qualsevol data i obtén la data límit i data d'obertura del termini.
    - **Calculadora de proporcionalitat**: Per a personal interí o contractes temporals que s'incorporen durant el curs.
-   - **Taula de quotes per plantilla**: Límit de 5 docents al dia per a l'IES Camp de Morvedre (>81 docents) i criteris de desempat (no haver gaudit cap dia > sorteig).
+   - **Taula de quotes per plantilla**: Contingent oficial i criteris de prelació.
 
-6. **Bilingüe (Valencià / Castellà)**:
-   - Commutador ràpid a la capçalera per a consultar la web en la llengua desitjada.
+6. **Bilingüe 100% (Valencià / Castellà)**:
+   - Traducció completa instantània de tota la interfície, incloent calendari, calculadores, normativa i preguntes freqüents (FAQ).
 
 ---
 
-## 🚀 Com Utilitzar o Desplegar
+## 🚀 Desplegament en GITHUB PAGES
 
-Aquesta aplicació està construïda amb tecnologies web estàndard (HTML5, CSS3, JavaScript ES6) **sense necessitat de servidors ni instal·lacions complexes**:
+Aquesta web és **100% estàtica (Client-Side)** i està optimitzada per a funcionar immediatament en **GitHub Pages**:
 
-1. **Ús directe local**:
-   - Obre directament el fitxer `index.html` en qualsevol navegador web modern (Chrome, Safari, Firefox, Edge).
-2. **Allotjament en la web del centre**:
-   - Puja la carpeta del projecte a l'espai web de l'institut (PortalEdu / servidor web del centre) o comparteix-lo en la xarxa interna de la sala de professorat.
+- **Sense codi de servidor**: Només HTML5, CSS3 i JavaScript natiu (Vanilla JS).
+- **Sense dependències ni compiladors**: No requereix Node.js, ni `npm install`, ni passos de build.
+- **Rutes relatives (`./`)**: Funciona correctament tant a l'arrel d'un domini com sota un subdirectori de repositori (`https://<usuari>.github.io/<nom-repositori>/`).
+- **Sense codi insegur ni bloquejant**: Notificacions basades en interfície integrada (*toasts* no bloquejants), sense crides a `alert()`, `confirm()` o APIs no permeses en entorns aïllats o iframes educatius (Moodle, Aules, Teams).
+- **Emmagatzematge aïllat**: Protegit amb control d'errors per si l'usuari navega en mode d'incògnit o té restringides les galetes de tercers.
+
+### Passos per activar GitHub Pages:
+1. Puja aquest repositori a GitHub.
+2. Ves a **Settings** > **Pages** dins del teu repositori.
+3. A l'apartat **Build and deployment** > **Source**, selecciona **Deploy from a branch**.
+4. Tria la branca `main` (o `master`) i la carpeta `/ (root)`.
+5. Fes clic a **Save**. En un minut, la web estarà publicada i accessible a tothom!
 
 ---
 
@@ -62,12 +70,13 @@ Aquesta aplicació està construïda amb tecnologies web estàndard (HTML5, CSS3
 
 ```
 calendario-moscosos/
-├── index.html            # Pàgina principal estructurada i bilingüe
+├── index.html            # Pàgina principal amb vista anual i bilingüe
 ├── css/
-│   └── styles.css        # Estils visuals, disseny responsive i regles @media print
+│   └── styles.css        # Estils corporatius IES Camp de Morvedre i disseny responsive
 ├── js/
-│   ├── calendar-data.js  # Base de dades del curs 2026-2027 amb la catalogació de cada dia
-│   ├── rules.js          # Motor de regles normatives, validacions i terminis
-│   └── app.js            # Lògica interactiva, modal, gestor de selecció i instància oficial
+│   ├── logo-data.js      # Logotip oficial del centre en format lleuger
+│   ├── calendar-data.js  # Base de dades del curs 2026-2027 i avaluacions d'FP i ESO/BAT
+│   ├── rules.js          # Motor de regles normatives GVA, quotes i terminis
+│   └── app.js            # Controlador interactiu, inspector de dia i emmagatzematge segur
 └── README.md             # Documentació de l'aplicació
 ```

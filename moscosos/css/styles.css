@@ -978,6 +978,37 @@ body {
   .selection-counts { justify-content: space-around; }
 }
 
+/* Toast Notifications (modernes, no bloquejants i segures en sandbox / GitHub Pages) */
+.app-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: var(--brand-dark);
+  color: #ffffff;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  max-width: 380px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.app-toast.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.app-toast.danger {
+  background: #b91c1c;
+}
+.app-toast.info {
+  background: var(--brand-dark);
+  border-left: 4px solid var(--brand-teal);
+}
+
 @media print {
   body { background: #ffffff !important; color: #000000 !important; font-size: 10pt; }
   .app-header, .nav-tabs-wrapper, .info-banner, .legend-card, .calendar-controls, .profile-selector-card, .selection-bar, .modal-overlay, .tool-grid, .app-footer { display: none !important; }

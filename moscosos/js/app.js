@@ -5,12 +5,55 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Emmagatzematge resilient (evita bloquejos per polítiques de seguretat en GitHub Pages / iframes)
+  const safeStorage = {
+    _mem: {},
+    getItem(key, fallback = null) {
+      try {
+        if (typeof window !== "undefined" && window.localStorage) {
+          const val = window.localStorage.getItem(key);
+          return val !== null ? val : fallback;
+        }
+      } catch (e) {
+        // En cas de restriccions de privadesa del navegador o entorn sandboxed
+      }
+      return this._mem[key] !== undefined ? this._mem[key] : fallback;
+    },
+    setItem(key, val) {
+      this._mem[key] = val;
+      try {
+        if (typeof window !== "undefined" && window.localStorage) {
+          window.localStorage.setItem(key, val);
+        }
+      } catch (e) {
+        // Fallback transparent en memòria
+      }
+    }
+  };
+
+  // Notificacions no bloquejants (permet ús en entorns protegits i iframes de GitHub Pages)
+  function showToast(msg, type = "info") {
+    let toast = document.getElementById("appToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "appToast";
+      toast.className = "app-toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.className = `app-toast active ${type}`;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => {
+      toast.classList.remove("active");
+    }, 3500);
+  }
+
   // Estat de l'aplicació
   const state = {
-    lang: localStorage.getItem("ies_morvedre_lang") || "val",
-    profile: localStorage.getItem("ies_morvedre_profile") || "eso_bat", // "eso_bat" | "fp"
+    lang: safeStorage.getItem("ies_morvedre_lang", "val"),
+    profile: safeStorage.getItem("ies_morvedre_profile", "eso_bat"), // "eso_bat" | "fp"
     activeFilter: "all",
-    selectedDates: JSON.parse(localStorage.getItem("ies_morvedre_selected_dates") || "[]"),
+    selectedDates: JSON.parse(safeStorage.getItem("ies_morvedre_selected_dates", "[]")),
     selectedDayModal: null
   };
 
@@ -37,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
       profileFp: "⚙️ Formació Professional (FP)",
       bannerTitle: "Permís per assumptes particulars (Instrucció DG Personal Docent)",
       bannerDesc: "Fins a 6 dies retribuïts: 3 en període lectiu i 3 en període no lectiu. Antelació mínima: 15 dies naturals.",
-      badgeQuotaText: "Quota màxima centre: 5 docents/dia (>81 docents)",
+      badgeQuotaText: "Quota màx centre: 7 docents/dia (5 matí + 2 vesprada)",
+      badgeQuotaTarde: "FP Torn vesprada: màx 2 docents/dia",
       legendTitle: "Codi de colors del calendari anual",
       legDisponible: "Disponible (Lectiu)",
       legBloquejat: "No disponible (Normativa / Avaluacions)",
@@ -92,14 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
       quotaR4Staff: "De 61 a 80 docents",
       quotaR4Max: "4 docents",
       quotaR5Staff: "<strong>Més de 81 docents (IES Camp de Morvedre)</strong>",
-      quotaR5Max: "<strong>5 docents</strong>",
-      quotaCriteria: "<strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong><ol style=\"margin-left: 1.25rem; margin-top: 0.35rem;\"><li>1r: Preferència per a aquells docents que <strong>no hagen gaudit de cap dia</strong> de permís en el present curs escolar.</li><li>2n: En cas d'empat, es resoldrà mitjançant <strong>sorteig públic</strong>.</li></ol>",
+      quotaR5Max: "<strong>5 matí + 2 vesprada (Màx 7 docents/dia)</strong>",
+      quotaCriteria: `<strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong>
+          <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
+            <li>1r: Preferència per a aquells docents que <strong>no hagen gaudit de cap dia</strong> de permís en el present curs escolar.</li>
+            <li>2n: En cas d'empat, es resoldrà mitjançant <strong>sorteig públic</strong>.</li>
+          </ol>`,
+      quotaTardeNotice: "<strong>ℹ️ Distribució de quotes per torns (IES Camp de Morvedre):</strong> El contingent màxim del centre és de <strong>5 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong> (FP). Per tant, el màxim simultani permès al centre sumant ambdós torns és de <strong>7 docents al dia</strong> (5 matí + 2 vesprada). En cap cas podran coincidir més de 2 docents de vesprada el mateix dia.",
       normativeSummaryTitle: "Resum de la Instrucció de la DG de Personal Docent (GVA)",
-      normativeSummaryBody: `<p><strong>1. Concepte i naturalesa:</strong> Permís retribuït per assumptes particulars sense necessitat de justificació. El professorat disposa de fins a <strong>6 dies per curs escolar</strong> (de l'1 de setembre al 31 d'agost de l'any següent), distribuïts en un màxim de <strong>3 dies en període lectiu</strong> i <strong>3 dies en període no lectiu</strong>.</p>
+      normativeSummaryBody: `<p><strong>1. Nombre de dies:</strong> El personal docent pot sol·licitar fins a un màxim de <strong>6 dies d'assumptes particulars</strong> per curs escolar:</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li>Fins a <strong>3 dies en períodes lectius</strong> (amb presència d'alumnat a l'aula).</li>
+            <li>Fins a <strong>3 dies en períodes no lectius</strong> (juliol, setembre abans de l'inici de curs, jornades formatives o períodes sense activitat lectiva).</li>
+          </ul>
           <br>
           <p><strong>2. Retribució:</strong> Els sis dies són amb dret íntegre a retribucions.</p>
           <br>
-          <p><strong>3. Condició pedagògica inexcusable:</strong> El docent que obtinga aquest permís té l'<strong>obligació d'elaborar i deixar dipositat un pla d'activitats per a l'alumnat</strong> a la Prefectura d'Estudis per a garantir la continuïtat pedagògica.</p>
+          <p><strong>3. Condició pedagògica inexcusable:</strong> El docent que obtinga aquest permís té l'<strong>obligació d'elaborar i deixar depositat un pla d'activitats per a l'alumnat</strong> a la Prefectura d'Estudis per a garantir la continuïtat pedagògica.</p>
           <br>
           <p><strong>4. Sol·licitud i terminis:</strong> S'ha de presentar davant la Direcció del centre amb una antelació mínima de <strong>15 dies naturals</strong> i una antelació màxima de <strong>dos mesos</strong> respecte a la data sol·licitada.</p>
           <br>
@@ -112,7 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <li>En el període de <strong>7 dies abans o després de les vacances</strong> de Nadal, Falles, Pasqua i Sant Joan.</li>
             <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions del centre per a FP o ESO/Batxillerat), ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
             <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
-          </ul>`,
+          </ul>
+          <br>
+          <p><strong>7. Contingent per torns (Matí i Vesprada d'FP):</strong> A l'IES Camp de Morvedre, el contingent màxim és de <strong>5 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong>. Per tant, el màxim simultani permès al centre entre ambdós torns és de <strong>7 docents al dia (5 de matí + 2 de vesprada)</strong>. Mai podran coincidir més de dos docents del torn de vesprada en una mateixa data.</p>`,
       faqSectionTitle: "Preguntes Freqüents (FAQ)",
       faqQ1: "Puc ajuntar dos dies moscosos si un és dijous i l'altre divendres?",
       faqA1: "No. La normativa estableix de manera taxativa que <em>\"no podran gaudir-se de manera consecutiva\"</em>. Tampoc és permés demanar divendres i dilluns consecutius, ja que es consideren dies laborals consecutius.",
@@ -121,11 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
       faqQ3: "Puc demanar un moscós lectiu el mes de setembre?",
       faqA3: "Només a partir del 30 de setembre. Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.",
       faqQ4: "Què passa si dos o més companys del mateix departament demanem el mateix dia?",
-      faqA4: "La concessió està condicionada a les necessitats del servei educatiu. A l'IES Camp de Morvedre el contingent màxim general del centre és de 5 docents al dia. Si hi ha coincidència en un mateix departament que impossibilite l'atenció de l'alumnat, Prefectura i Direcció prioritzaran el docent que no haja gaudit cap dia aquest curs o realitzaran sorteig.",
+      faqA4: "La concessió està condicionada a les necessitats del servei educatiu. A l'IES Camp de Morvedre el contingent màxim és de 5 docents pel torn de matí i 2 docents pel torn de vesprada (sumant un màxim de 7 docents al dia). Si hi ha coincidència en un mateix departament o torn que impossibilite l'atenció de l'alumnat, Prefectura i Direcció prioritzaran el docent que no haja gaudit cap dia aquest curs o realitzaran sorteig.",
       faqQ5: "Sóc interí/na i tinc una vacant o substitució temporal. Quants dies em toquen?",
       faqA5: "El nombre de dies és estrictament proporcional al temps de servei en el curs escolar. Pots utilitzar la nostra pestanya de <em>Calculadores</em> per a comprovar els teus dies exactes. A més, si cesses i et tornen a nomenar en el mateix curs, conserves els dies pendents de gaudi!",
       faqQ6: "Si no gaste els dies d'aquest curs, els puc acumular per al curs vinent?",
       faqA6: "No. Els dies no gaudits abans de la finalització del curs escolar caduquen i no són acumulables en cap cas.",
+      faqQ7: "Com s'aplica el límit de dies moscosos per al professorat del torn de vesprada d'FP?",
+      faqA7: "A l'IES Camp de Morvedre s'aplica una distribució diferenciada per torns: el contingent màxim és de <strong>5 docents pel torn de matí</strong> i de <strong>2 docents pel torn de vesprada</strong>. Per tant, <strong>mai podran gaudir de permís per assumptes particulars més de dos professors o professores del torn de vesprada el mateix dia</strong>, i el total del centre mai podrà superar els <strong>7 docents diaris (5 de matí + 2 de vesprada)</strong>, garantint sempre la correcta atenció educativa.",
       footerText1: "IES Camp de Morvedre · Sagunt (València) · Eina desenvolupada per a la planificació docent del curs 2026-2027.",
       footerText2: "D'acord amb la normativa i instruccions de la Direcció General de Personal Docent (Conselleria d'Educació, GVA)."
     },
@@ -141,7 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
       profileFp: "⚙️ Formación Profesional (FP)",
       bannerTitle: "Permiso por asuntos particulares (Instrucción DG Personal Docente)",
       bannerDesc: "Hasta 6 días retribuidos: 3 en período lectivo y 3 en período no lectivo. Antelación mínima: 15 días naturales.",
-      badgeQuotaText: "Cupo máximo centro: 5 docentes/día (>81 docentes)",
+      badgeQuotaText: "Cupo máx centro: 7 docentes/día (5 mañana + 2 tarde)",
+      badgeQuotaTarde: "FP Turno tarde: máx 2 docentes/día",
       legendTitle: "Código de colores del calendario anual",
       legDisponible: "Disponible (Lectivo)",
       legBloquejat: "No disponible (Normativa / Evaluaciones)",
@@ -196,10 +254,19 @@ document.addEventListener("DOMContentLoaded", () => {
       quotaR4Staff: "De 61 a 80 docentes",
       quotaR4Max: "4 docentes",
       quotaR5Staff: "<strong>Más de 81 docentes (IES Camp de Morvedre)</strong>",
-      quotaR5Max: "<strong>5 docentes</strong>",
-      quotaCriteria: "<strong>Criterios de prelación en caso de concurrencia para el mismo día:</strong><ol style=\"margin-left: 1.25rem; margin-top: 0.35rem;\"><li>1º: Preferencia para aquellos docentes que <strong>no hayan disfrutado de ningún día</strong> de permiso en el presente curso escolar.</li><li>2º: En caso de empate, se resolverá mediante <strong>sorteo público</strong>.</li></ol>",
+      quotaR5Max: "<strong>5 mañana + 2 tarde (Máx 7 docentes/día)</strong>",
+      quotaCriteria: `<strong>Criterios de prelación en caso de concurrencia para el mismo día:</strong>
+          <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
+            <li>1º: Preferencia para aquellos docentes que <strong>no hayan disfrutado de ningún día</strong> de permiso en el presente curso escolar.</li>
+            <li>2º: En caso de empate, se resolverá mediante <strong>sorteo público</strong>.</li>
+          </ol>`,
+      quotaTardeNotice: "<strong>ℹ️ Distribución de cupos por turnos (IES Camp de Morvedre):</strong> El cupo máximo del centro es de <strong>5 docentes para el turno de mañana</strong> y de <strong>2 profesores/as para el turno de tarde</strong> (FP). Por tanto, el máximo simultáneo permitido en el centro sumando ambos turnos es de <strong>7 docentes al día</strong> (5 mañana + 2 tarde). En ningún caso podrán coincidir más de 2 docentes de tarde el mismo día.",
       normativeSummaryTitle: "Resumen de la Instrucción de la DG de Personal Docente (GVA)",
-      normativeSummaryBody: `<p><strong>1. Concepto y naturaleza:</strong> Permiso retribuido por asuntos particulares sin necesidad de justificación. El profesorado dispone de hasta <strong>6 días por curso escolar</strong> (del 1 de septiembre al 31 de agosto del año siguiente), distribuidos en un máximo de <strong>3 días en período lectivo</strong> y <strong>3 días en período no lectivo</strong>.</p>
+      normativeSummaryBody: `<p><strong>1. Número de días:</strong> El personal docente puede solicitar hasta un máximo de <strong>6 días de asuntos particulares</strong> por curso escolar:</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li>Hasta <strong>3 días en períodos lectivos</strong> (con presencia de alumnado en el aula).</li>
+            <li>Hasta <strong>3 días en períodos no lectivos</strong> (julio, septiembre antes del inicio de curso, jornadas formativas o períodos sin actividad lectiva).</li>
+          </ul>
           <br>
           <p><strong>2. Retribución:</strong> Los seis días son con derecho íntegro a retribuciones.</p>
           <br>
@@ -216,7 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <li>En el período de <strong>7 días antes o después de las vacaciones</strong> de Navidad, Fallas, Pascua y San Juan.</li>
             <li>En <strong>períodos de evaluación</strong> escolares (según el calendario oficial de evaluaciones del centro para FP o ESO/Bachillerato), ni entre la evaluación ordinaria y la extraordinaria de final de curso.</li>
             <li><strong>No se pueden disfrutar de manera consecutiva</strong>.</li>
-          </ul>`,
+          </ul>
+          <br>
+          <p><strong>7. Cupo por turnos (Mañana y Tarde de FP):</strong> En el IES Camp de Morvedre, el cupo máximo es de <strong>5 docentes para el turno de mañana</strong> y de <strong>2 profesores/as para el turno de tarde</strong>. Por tanto, el máximo simultáneo permitido en el centro sumando ambos turnos es de <strong>7 docentes al día (5 de mañana + 2 de tarde)</strong>. Nunca podrán coincidir más de dos docentes del turno de tarde en una misma fecha.</p>`,
       faqSectionTitle: "Preguntas Frecuentes (FAQ)",
       faqQ1: "¿Puedo juntar dos días moscosos si uno es jueves y el otro viernes?",
       faqA1: "No. La normativa establece de manera taxativa que <em>\"no podrán disfrutarse de manera consecutiva\"</em>. Tampoco está permitido pedir viernes y lunes consecutivos, ya que se consideran días laborables consecutivos.",
@@ -225,11 +294,13 @@ document.addEventListener("DOMContentLoaded", () => {
       faqQ3: "¿Puedo pedir un moscoso lectivo en el mes de septiembre?",
       faqA3: "Solo a partir del 30 de septiembre. Los 15 primeros días lectivos con alumnado (del 9 al 29 de septiembre de 2026) están bloqueados por normativa. Los días del 1 al 8 de septiembre son período no lectivo, donde se podría solicitar uno de los 3 días no lectivos.",
       faqQ4: "¿Qué ocurre si dos o más compañeros del mismo departamento pedimos el mismo día?",
-      faqA4: "La concesión está condicionada a las necesidades del servicio educativo. En el IES Camp de Morvedre el cupo máximo general del centro es de 5 docentes al día. Si hay coincidencia en un mismo departamento que imposibilite la atención del alumnado, Jefatura y Dirección priorizarán al docente que no haya disfrutado ningún día este curso o realizarán sorteo.",
+      faqA4: "La concesión está condicionada a las necesidades del servicio educativo. En el IES Camp de Morvedre el cupo máximo es de 5 docentes para el turno de mañana y 2 docentes para el turno de tarde (sumando un máximo de 7 docentes al día). Si hay coincidencia en un mismo departamento o turno que imposibilite la atención del alumnado, Jefatura y Dirección priorizarán al docente que no haya disfrutado ningún día este curso o realizarán sorteo.",
       faqQ5: "¿Soy interino/a y tengo una vacante o sustitución temporal. ¿Cuántos días me tocan?",
       faqA5: "El número de días es estrictamente proporcional al tiempo de servicio en el curso escolar. Puedes utilizar nuestra pestaña de <em>Calculadoras</em> para comprobar tus días exactos. Además, ¡si cesas y te vuelven a nombrar en el mismo curso, conservas los días pendientes de disfrute!",
       faqQ6: "¿Si no gasto los días de este curso, los puedo acumular para el curso siguiente?",
       faqA6: "No. Los días no disfrutados antes de la finalización del curso escolar caducan y no son acumulables en ningún caso.",
+      faqQ7: "¿Cómo se aplica el límite de días moscosos para el profesorado del turno de tarde de FP?",
+      faqA7: "En el IES Camp de Morvedre se aplica una distribución diferenciada por turnos: el cupo máximo es de <strong>5 docentes para el turno de mañana</strong> y de <strong>2 profesores/as para el turno de tarde</strong>. Por tanto, <strong>nunca podrán disfrutar de permiso por asuntos particulares más de dos profesores o profesoras del turno de tarde el mismo día</strong>, y el total del centro nunca podrá superar los <strong>7 docentes diarios (5 de mañana + 2 de tarde)</strong>, garantizando siempre la debida atención educativa.",
       footerText1: "IES Camp de Morvedre · Sagunto (Valencia) · Herramienta desarrollada para la planificación docente del curso 2026-2027.",
       footerText2: "De acuerdo con la normativa e instrucciones de la Dirección General de Personal Docente (Conselleria de Educación, GVA)."
     }
@@ -337,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
   elLangBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       state.lang = btn.getAttribute("data-lang");
-      localStorage.setItem("ies_morvedre_lang", state.lang);
+      safeStorage.setItem("ies_morvedre_lang", state.lang);
       updateI18n();
     });
   });
@@ -346,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
   elProfileBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       state.profile = btn.getAttribute("data-profile");
-      localStorage.setItem("ies_morvedre_profile", state.profile);
+      safeStorage.setItem("ies_morvedre_profile", state.profile);
       updateProfileButtons();
       renderYearView();
       renderSelectionBar();
@@ -518,11 +589,11 @@ document.addEventListener("DOMContentLoaded", () => {
       state.selectedDates.splice(idx, 1);
     } else {
       if (dayData.status === "no-disponible") {
-        alert(state.lang === "val" ? "Aquest dia està expressament prohibit per normativa o per sessions d'avaluació." : "Este día está expresamente prohibido por normativa o sesiones de evaluación.");
+        showToast(state.lang === "val" ? "Aquest dia està expressament prohibit per normativa o per sessions d'avaluació." : "Este día está expresamente prohibido por normativa o sesiones de evaluación.", "danger");
         return;
       }
       if (dayData.status === "festiu" || dayData.status === "cap-de-setmana") {
-        alert(state.lang === "val" ? "No cal demanar permís en dies festius o caps de setmana." : "No procede solicitar permiso en días festivos o fines de semana.");
+        showToast(state.lang === "val" ? "No cal demanar permís en dies festius o caps de setmana." : "No procede solicitar permiso en días festivos o fines de semana.", "info");
         return;
       }
 
@@ -530,8 +601,8 @@ document.addEventListener("DOMContentLoaded", () => {
       state.selectedDates.sort();
     }
 
-    // Desar selecció
-    localStorage.setItem("ies_morvedre_selected_dates", JSON.stringify(state.selectedDates));
+    // Desar selecció de manera segura
+    safeStorage.setItem("ies_morvedre_selected_dates", JSON.stringify(state.selectedDates));
     renderYearView();
     renderSelectionBar();
   }
@@ -583,12 +654,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   elBtnClearSelection.addEventListener("click", () => {
-    if (confirm(state.lang === "val" ? "Vols buidar la teua selecció de dates?" : "¿Deseas vaciar tu selección de fechas?")) {
-      state.selectedDates = [];
-      localStorage.setItem("ies_morvedre_selected_dates", JSON.stringify(state.selectedDates));
-      renderYearView();
-      renderSelectionBar();
-    }
+    state.selectedDates = [];
+    safeStorage.setItem("ies_morvedre_selected_dates", JSON.stringify(state.selectedDates));
+    renderYearView();
+    renderSelectionBar();
+    showToast(state.lang === "val" ? "S'ha buidat la selecció de dates." : "Se ha vaciado la selección de fechas.", "info");
   });
 
   // Calculadora de Terminis
@@ -620,13 +690,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const endVal = elCalcEnd.value;
 
     if (!startVal || !endVal) {
-      alert(state.lang === "val" ? "Indica tant la data d'inici com la de fi del nomenament." : "Indica tanto la fecha de inicio como la de fin del nombramiento.");
+      elPropResult.innerHTML = `<div class="alert-box danger" style="margin-top: 0.75rem;">⚠️ ${state.lang === "val" ? "Indica tant la data d'inici com la de fi del nomenament." : "Indica tanto la fecha de inicio como la de fin del nombramiento."}</div>`;
       return;
     }
 
     const res = rules.calculateProportionality(startVal, endVal);
     if (res.error) {
-      alert(res.error);
+      elPropResult.innerHTML = `<div class="alert-box danger" style="margin-top: 0.75rem;">⚠️ ${res.error}</div>`;
       return;
     }
 

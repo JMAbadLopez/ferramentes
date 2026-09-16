@@ -11,14 +11,19 @@ window.MOSCOSO_RULES = {
   ANTELACIO_MINIMA_DIES: 15, // dies naturals mínims abans de la data
   ANTELACIO_MAXIMA_MESOS: 2,  // mesos màxims d'antelació
 
-  // Escala de quota màxima simultània segons plantilla del centre
+  // Escala de quota màxima simultània segons plantilla del centre (torn de matí)
   getQuotaPerPlantilla: function(numDocents) {
     if (numDocents <= 20) return 1;
     if (numDocents <= 40) return 2;
     if (numDocents <= 60) return 3;
     if (numDocents <= 80) return 4;
-    return 5; // Més de 81 docents (cas habitual IES Camp de Morvedre)
+    return 5; // Més de 81 docents (torn de matí a l'IES Camp de Morvedre)
   },
+
+  // Quotes específiques IES Camp de Morvedre
+  QUOTA_MATI_CENTRE: 5,
+  QUOTA_VESPRADA_CENTRE: 2,
+  QUOTA_TOTAL_CENTRE: 7, // Màxim conjunt centre (5 matí + 2 vesprada)
 
   // Motius de no disponibilitat amb traducció
   reasons: {
