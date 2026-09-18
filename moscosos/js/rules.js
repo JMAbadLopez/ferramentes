@@ -8,22 +8,22 @@ window.MOSCOSO_RULES = {
   MAX_DIES_LECTIUS: 3,
   MAX_DIES_NO_LECTIUS: 3,
   MAX_TOTAL_DIES: 6,
-  ANTELACIO_MINIMA_DIES: 15, // dies naturals mínims abans de la data
-  ANTELACIO_MAXIMA_MESOS: 2,  // mesos màxims d'antelació
+  ANTELACIO_MINIMA_DIES: 7, // dies naturals mínims abans de la data
+  ANTELACIO_MAXIMA_MESOS: 1, // mesos màxims d'antelació (1 mes)
 
-  // Escala de quota màxima simultània segons plantilla del centre (torn de matí)
+  // Escala de quota màxima simultània segons plantilla del centre (escala original ordre GVA)
   getQuotaPerPlantilla: function(numDocents) {
     if (numDocents <= 20) return 1;
     if (numDocents <= 40) return 2;
     if (numDocents <= 60) return 3;
     if (numDocents <= 80) return 4;
-    return 5; // Més de 81 docents (torn de matí a l'IES Camp de Morvedre)
+    return 5; // Més de 81 docents (ordre oficial GVA)
   },
 
-  // Quotes específiques IES Camp de Morvedre
-  QUOTA_MATI_CENTRE: 5,
+  // Quotes específiques IES Camp de Morvedre (plantilla 141-160 docents per torns)
+  QUOTA_MATI_CENTRE: 6,
   QUOTA_VESPRADA_CENTRE: 2,
-  QUOTA_TOTAL_CENTRE: 7, // Màxim conjunt centre (5 matí + 2 vesprada)
+  QUOTA_TOTAL_CENTRE: 8, // Màxim conjunt centre (6 matí + 2 vesprada)
 
   // Motius de no disponibilitat amb traducció
   reasons: {
@@ -98,18 +98,18 @@ window.MOSCOSO_RULES = {
   },
 
   /**
-   * Calcula la finestra temporal legal de presentació de sol·licitud
-   * Mínim: 15 dies naturals abans
-   * Màxim: 2 mesos abans
+   * Calcula la finestra temporal de presentació de sol·licitud
+   * Mínim: 7 dies naturals abans
+   * Màxim: 1 mes abans
    */
   calculateApplicationWindow: function(dateStr) {
     const targetDate = new Date(dateStr + "T00:00:00");
     
-    // Data límit màxima per demanar-lo (15 dies naturals abans)
+    // Data límit màxima per demanar-lo (7 dies naturals abans)
     const deadlineDate = new Date(targetDate);
     deadlineDate.setDate(deadlineDate.getDate() - this.ANTELACIO_MINIMA_DIES);
 
-    // Data d'inici del termini (2 mesos abans)
+    // Data d'inici del termini (1 mes abans)
     const earliestDate = new Date(targetDate);
     earliestDate.setMonth(earliestDate.getMonth() - this.ANTELACIO_MAXIMA_MESOS);
 
@@ -238,8 +238,8 @@ window.MOSCOSO_RULES = {
         warnings.push({
           type: "deadline_passed",
           date: dateStr,
-          msgVal: `Atenció per al ${dateStr}: falten menys de 15 dies naturals (la data límit de sol·licitud era el ${win.deadlineFormatted}). Direcció podria denegar-lo per fora de termini.`,
-          msgEs: `Atención para el ${dateStr}: quedan menos de 15 días naturales (la fecha límite de solicitud era el ${win.deadlineFormatted}). Dirección podría denegarlo por fuera de plazo.`
+          msgVal: `Atenció per al ${dateStr}: falten menys de 7 dies naturals (la data límit de sol·licitud era el ${win.deadlineFormatted}). Direcció podria denegar-lo per fora de termini.`,
+          msgEs: `Atención para el ${dateStr}: quedan menos de 7 días naturales (la fecha límite de solicitud era el ${win.deadlineFormatted}). Dirección podría denegarlo por fuera de plazo.`
         });
       }
     }

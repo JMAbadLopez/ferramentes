@@ -75,11 +75,11 @@
           <div class="info-banner-icon">💡</div>
           <div class="info-banner-text">
             <h3 data-i18n="bannerTitle">Permís per assumptes particulars (Instrucció DG Personal Docent)</h3>
-            <p data-i18n="bannerDesc">Fins a 6 dies retribuïts: 3 en període lectiu i 3 en període no lectiu. Antelació mínima: 15 dies naturals.</p>
+            <p data-i18n="bannerDesc">Fins a 6 dies retribuïts: 3 en període lectiu i 3 en període no lectiu. Antelació: mínim 7 dies naturals i màxim 1 mes.</p>
           </div>
         </div>
         <div class="info-banner-badges">
-          <span class="badge-quota" data-i18n="badgeQuotaText">Quota màx centre: 7 docents/dia (5 matí + 2 vesprada)</span>
+          <span class="badge-quota" data-i18n="badgeQuotaText">Quota màx centre: 8 docents/dia (6 matí + 2 vesprada)</span>
           <span class="badge-quota" style="background: rgba(116, 197, 195, 0.2); color: #111827; border: 1px solid var(--brand-teal);" data-i18n="badgeQuotaTarde">FP Torn vesprada: màx 2 docents/dia</span>
         </div>
       </div>
@@ -142,14 +142,14 @@
             <h3 class="tool-title" data-i18n="calcTitle1">Calculadora de Finestra de Sol·licitud</h3>
           </div>
           <p style="font-size: 0.85rem; color: var(--gva-text-muted); margin-bottom: 1rem;" data-i18n="calcDesc1">
-            Indica el dia que voldries gaudir com a moscós per a saber quan has d'enviar la sol·licitud com a molt tard i quan s'obri el termini.
+            Indica el dia que voldries gaudir com a moscós per a saber quan has d'enviar la sol·licitud com a molt tard (mínim 7 dies naturals) i quan s'obri el termini (màxim 1 mes).
           </p>
           <div class="form-group">
             <label class="form-label" for="calcTargetDate" data-i18n="lblTargetDate">Data desitjada per al permís:</label>
             <input type="date" id="calcTargetDate" class="form-input" min="2026-09-01" max="2027-07-31" value="2026-11-16">
           </div>
           <div class="result-card" id="calcWinResult">
-            <span style="font-size: 0.85rem; color: #64748b;" data-i18n="calcWinPlaceholder">Tria una data per a veure els terminis legals d'antelació (mínim 15 dies naturals i màxim 2 mesos).</span>
+            <span style="font-size: 0.85rem; color: #64748b;" data-i18n="calcWinPlaceholder">Tria una data per a veure els terminis d'antelació (mínim 7 dies naturals i màxim 1 mes).</span>
           </div>
         </div>
 
@@ -182,10 +182,10 @@
       <div class="tool-card" style="margin-top: 1.5rem;">
         <div class="tool-card-header">
           <span class="tool-icon">👥</span>
-          <h3 class="tool-title" data-i18n="calcTitle3">Taula de Quotes per Plantilla (IES Camp de Morvedre)</h3>
+          <h3 class="tool-title" data-i18n="calcTitle3">Taula de Quotes per Plantilla (Ordre Oficial GVA)</h3>
         </div>
         <p style="font-size: 0.9rem; margin-bottom: 1rem;" data-i18n="quotaDesc">
-          La concessió està supeditada a les necessitats del servei educatiu. El nombre màxim de docents en el centre als quals podrà concedir-se aquest permís per a un mateix dia lectiu s'ajusta a l'escala oficial:
+          La concessió està supeditada a les necessitats del servei educatiu. El nombre màxim de docents en el centre als quals podrà concedir-se aquest permís per a un mateix dia lectiu s'ajusta a l'escala oficial de la Conselleria:
         </p>
         <table class="quota-table">
           <thead>
@@ -211,21 +211,18 @@
               <td data-i18n="quotaR4Staff">De 61 a 80 docents</td>
               <td data-i18n="quotaR4Max">4 docents</td>
             </tr>
-            <tr class="highlight">
-              <td data-i18n-html="quotaR5Staff"><strong>Més de 81 docents (IES Camp de Morvedre)</strong></td>
-              <td data-i18n-html="quotaR5Max"><strong>5 matí + 2 vesprada (Màx 7 docents/dia)</strong></td>
+            <tr>
+              <td data-i18n="quotaR5Staff">Més de 81 docents</td>
+              <td data-i18n="quotaR5Max">5 docents</td>
             </tr>
           </tbody>
         </table>
         <div class="alert-box info" style="margin-top: 1rem;" data-i18n-html="quotaCriteria">
           <strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong>
-          <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
-            <li>1r: Preferència per a aquells docents que <strong>no hagen gaudit de cap dia</strong> de permís en el present curs escolar.</li>
-            <li>2n: En cas d'empat, es resoldrà mitjançant <strong>sorteig públic</strong>.</li>
-          </ol>
+          <p style="margin-top: 0.35rem; color: var(--text-secondary);"><em>S'actualitzarà pròximament segons l'acord que adopten el Claustre de Professorat i el Consell Escolar del centre.</em></p>
         </div>
         <div class="alert-box info" style="margin-top: 0.75rem; border-left: 4px solid var(--brand-teal);" data-i18n-html="quotaTardeNotice">
-          <strong>ℹ️ Distribució de quotes per torns (IES Camp de Morvedre):</strong> El contingent màxim del centre és de <strong>5 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong> (FP). Per tant, el màxim simultani permès al centre sumant ambdós torns és de <strong>7 docents al dia</strong> (5 matí + 2 vesprada). En cap cas podran coincidir més de 2 docents de vesprada el mateix dia.
+          <strong>📍 Quota específica de l'IES Camp de Morvedre (Distribució per torns):</strong> Per a la plantilla del centre (entre 141 i 160 docents) i atenent a l'organització en dos torns lectius, el contingent màxim és de <strong>8 docents al dia</strong>: <strong>6 docents pel torn de matí</strong> i <strong>2 professors/es pel torn de vesprada</strong> (FP). En cap cas podran coincidir més de 2 docents de vesprada el mateix dia.
         </div>
       </div>
     </section>
@@ -245,7 +242,7 @@
           <br>
           <p><strong>3. Condició pedagògica inexcusable:</strong> El docent que obtinga aquest permís té l'<strong>obligació d'elaborar i deixar dipositat un pla d'activitats per a l'alumnat</strong> a la Prefectura d'Estudis per a garantir la continuïtat pedagògica.</p>
           <br>
-          <p><strong>4. Sol·licitud i terminis:</strong> S'ha de presentar davant la Direcció del centre amb una antelació mínima de <strong>15 dies naturals</strong> i una antelació màxima de <strong>dos mesos</strong> respecte a la data sol·licitada.</p>
+          <p><strong>4. Sol·licitud i terminis:</strong> S'ha de presentar davant la Direcció del centre amb una antelació mínima de <strong>7 dies naturals</strong> i una antelació màxima d'<strong>un mes</strong> respecte a la data sol·licitada.</p>
           <br>
           <p><strong>5. Resolució:</strong> Competència exclusiva del Director o Directora de l'institut. El silenci administratiu té caràcter <strong>desestimatori (negatiu)</strong>.</p>
           <br>
@@ -257,6 +254,8 @@
             <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions del centre per a FP o ESO/Batxillerat), ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
             <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
           </ul>
+          <br>
+          <p><strong>7. Contingent per torns (Matí i Vesprada d'FP):</strong> A l'IES Camp de Morvedre (plantilla d'entre 141 i 160 docents), el contingent màxim és de <strong>6 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong>. Per tant, el màxim simultani permès al centre entre ambdós torns és de <strong>8 docents al dia (6 de matí + 2 de vesprada)</strong>. Mai podran coincidir més de dos docents del torn de vesprada en una mateixa data.</p>
         </div>
       </div>
 
@@ -300,7 +299,7 @@
           <span class="faq-toggle-icon">+</span>
         </button>
         <div class="faq-answer" data-i18n-html="faqA4">
-          La concessió està condicionada a les necessitats del servei educatiu. A l'IES Camp de Morvedre el contingent màxim és de 5 docents pel torn de matí i 2 docents pel torn de vesprada (sumant un màxim de 7 docents al dia). Si hi ha coincidència en un mateix departament o torn que impossibilite l'atenció de l'alumnat, Prefectura i Direcció prioritzaran el docent que no haja gaudit cap dia aquest curs o realitzaran sorteig.
+          La concessió està condicionada a les necessitats del servei educatiu. Aquest criteri s'actualitzarà pròximament segons l'acord que adopten el Claustre de Professorat i el Consell Escolar del centre.
         </div>
       </div>
 
@@ -330,7 +329,7 @@
           <span class="faq-toggle-icon">+</span>
         </button>
         <div class="faq-answer" data-i18n-html="faqA7">
-          A l'IES Camp de Morvedre s'aplica una distribució diferenciada per torns: el contingent màxim és de <strong>5 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong>. Per tant, <strong>mai podran gaudir de permís per assumptes particulars més de dos professors o professores del torn de vesprada el mateix dia</strong>, i el total del centre mai podrà superar els <strong>7 docents diaris (5 de matí + 2 de vesprada)</strong>, garantint sempre la correcta atenció educativa.
+          A l'IES Camp de Morvedre s'aplica una distribució diferenciada per torns (plantilla de 141-160 docents): el contingent màxim és de <strong>6 docents pel torn de matí</strong> i de <strong>2 docents pel torn de vesprada</strong>. Per tant, <strong>mai podran gaudir de permís per assumptes particulars més de dos professors o professores del torn de vesprada el mateix dia</strong>, i el total del centre mai podrà superar els <strong>8 docents diaris (6 de matí + 2 de vesprada)</strong>, garantint sempre la correcta atenció educativa.
         </div>
       </div>
 
@@ -357,14 +356,14 @@
         </div>
 
         <div class="modal-section">
-          <div class="modal-section-title" data-i18n="modalDeadlinesLabel">Terminis legals de sol·licitud:</div>
+          <div class="modal-section-title" data-i18n="modalDeadlinesLabel">Terminis de sol·licitud:</div>
           <div class="timeline-card">
             <div class="timeline-item">
-              <div class="timeline-label" data-i18n="modalEarliestLabel">Obertura termini (2 mesos abans):</div>
+              <div class="timeline-label" data-i18n="modalEarliestLabel">Obertura de sol·licitud (1 mes abans):</div>
               <div class="timeline-value" id="modalEarliest">--/--/----</div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-label" data-i18n="modalDeadlineLabel">Data límit (15 dies abans):</div>
+              <div class="timeline-label" data-i18n="modalDeadlineLabel">Data límit recomanada (7 dies naturals abans):</div>
               <div class="timeline-value" id="modalDeadline" style="color: #b91c1c;">--/--/----</div>
             </div>
           </div>

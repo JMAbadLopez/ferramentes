@@ -15,6 +15,7 @@ window.CALENDAR_DATA_2026_2027 = {
   // Festius locals específics de Sagunt
   festiusLocals: [
     { data: "2026-12-07", nom: "Festiu Local Específic / Pont de la Constitució" },
+    { data: "2027-03-16", nom: "Falles de Sagunt (Festiu Local Escolar)" },
     { data: "2027-03-17", nom: "Falles de Sagunt (Festiu Local)" },
     { data: "2027-03-18", nom: "Falles de Sagunt (Festiu Local)" }
   ],
@@ -230,7 +231,7 @@ window.CALENDAR_DATA_2026_2027 = {
     "2026-12-19": { status: "cap-de-setmana", title: "Dissabte", desc: "Cap de setmana." },
     "2026-12-20": { status: "cap-de-setmana", title: "Diumenge", desc: "Cap de setmana." },
     "2026-12-21": { status: "no-disponible", reason: "set_dies_abans_nadal", title: "Pre-vacances Nadal", desc: "Dins dels 7 dies lectius previs a Nadal. Bloquejat per normativa GVA." },
-    "2026-12-22": { status: "no-disponible", reason: "set_dies_abans_nadal", title: "Darrer dia previ a Nadal", desc: "Dia immediatament anterior a vacances de Nadal. Bloquejat per normativa GVA." },
+    "2026-12-22": { status: "no-disponible", reason: "set_dies_abans_nadal", title: "Dia lectiu (Darrer dia previ a Nadal)", desc: "Dia lectiu escolar oficial. En situar-se immediatament abans de les vacances de Nadal (inici el 23 de desembre), no és concedible com a moscós per normativa GVA (7 dies previs a Nadal)." },
     "2026-12-23": { status: "festiu", title: "Vacances de Nadal", desc: "Període vacacional escolar." },
     "2026-12-24": { status: "festiu", title: "Vacances de Nadal", desc: "Període vacacional escolar (Nit de Nadal)." },
     "2026-12-25": { status: "festiu", title: "Nadal", desc: "Festiu nacional (Dia de Nadal)." },
@@ -320,7 +321,7 @@ window.CALENDAR_DATA_2026_2027 = {
     "2027-03-13": { status: "cap-de-setmana", title: "Dissabte", desc: "Cap de setmana." },
     "2027-03-14": { status: "cap-de-setmana", title: "Diumenge", desc: "Cap de setmana." },
     "2027-03-15": { status: "no-disponible", reason: "set_dies_abans_falles", title: "Setmana de Falles", desc: "Dins dels 7 dies previs a les festes de Falles. Bloquejat per normativa GVA." },
-    "2027-03-16": { status: "no-disponible", reason: "set_dies_abans_falles", title: "Planta de Falles", desc: "Dia immediatament anterior a festius de Falles. Bloquejat per normativa GVA." },
+    "2027-03-16": { status: "festiu", title: "Falles de Sagunt (Festiu escolar)", desc: "Festiu escolar local aprovat pel Consell Escolar Municipal de Sagunt (Plantà de Falles)." },
     "2027-03-17": { status: "festiu", title: "Falles de Sagunt", desc: "Festiu local específic de Sagunt." },
     "2027-03-18": { status: "festiu", title: "Falles de Sagunt", desc: "Festiu local específic de Sagunt." },
     "2027-03-19": { status: "festiu", title: "Sant Josep / Falles", desc: "Festiu autonòmic de la Comunitat Valenciana." },
