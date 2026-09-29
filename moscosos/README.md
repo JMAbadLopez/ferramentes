@@ -11,7 +11,7 @@ Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IE
    - **Separació de perfils docents**: Commuta entre `🎓 ESO i Batxillerat` i `⚙️ Formació Professional (FP)`. Les dates d'avaluació inicial, 1a, 2a, final i extraordinàries s'adapten fidelment al calendari oficial de l'IES Camp de Morvedre.
    - **Codi de colors semàfor**:
      - 🟢 **Verd**: Dia lectiu disponible per a demanar moscós lectiu.
-     - 🔴 **Roig**: Dia bloquejat per normativa (15 primers/últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles, Pasqua i Sant Joan, sessions d'avaluació segons perfil).
+     - 🔴 **Roig**: Dia bloquejat per normativa (7 primers/últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles, Pasqua i Sant Joan, sessions d'avaluació segons perfil).
      - 🔵 **Blau**: Festius oficials (Festius locals de Sagunt: 7 Desembre, 16, 17 i 18 Març; festius autonòmics i nacionals).
      - 🟡 **Taronja/Groc**: Períodes no lectius laborals (vàlids per als 3 dies no lectius).
      - ⚫ **Gris**: Caps de setmana.

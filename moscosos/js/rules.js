@@ -27,21 +27,29 @@ window.MOSCOSO_RULES = {
 
   // Motius de no disponibilitat amb traducció
   reasons: {
+    "7_primers_dies": {
+      val: "Dins dels 7 primers dies lectius del curs escolar (prohibit expressament per normativa GVA).",
+      es: "Dentro de los 7 primeros días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
+    },
+    "7_ultims_dies": {
+      val: "Dins dels 7 últims dies lectius del curs escolar (prohibit expressament per normativa GVA).",
+      es: "Dentro de los 7 últimos días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
+    },
     "15_primers_dies": {
-      val: "Dins dels 15 primers dies lectius del curs escolar (prohibit expressament per normativa GVA).",
-      es: "Dentro de los 15 primeros días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
+      val: "Dins dels 7 primers dies lectius del curs escolar (prohibit expressament per normativa GVA).",
+      es: "Dentro de los 7 primeros días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
     },
     "15_ultims_dies": {
-      val: "Dins dels 15 últims dies lectius del curs escolar (prohibit expressament per normativa GVA).",
-      es: "Dentro de los 15 últimos días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
+      val: "Dins dels 7 últims dies lectius del curs escolar (prohibit expressament per normativa GVA).",
+      es: "Dentro de los 7 últimos días lectivos del curso escolar (prohibido expresamente por normativa GVA)."
     },
     "15_primers_dies_i_avaluacio": {
-      val: "15 primers dies lectius del curs i coincidència amb avaluacions inicials.",
-      es: "15 primeros días lectivos del curso y coincidencia con evaluaciones iniciales."
+      val: "7 primers dies lectius del curs i coincidència amb avaluacions inicials.",
+      es: "7 primeros días lectivos del curso y coincidencia con evaluaciones iniciales."
     },
     "15_ultims_dies_i_avaluacio": {
-      val: "15 últims dies lectius del curs i període d'avaluacions finals / proves oficials (EBAU/Extraordinàries).",
-      es: "15 últimos días lectivos del curso y período de evaluaciones finales / pruebas oficiales (EBAU/Extraordinarias)."
+      val: "7 últims dies lectius del curs i període d'avaluacions finals / proves oficials (EBAU/Extraordinàries).",
+      es: "7 últimos días lectivos del curso y período de evaluaciones finales / pruebas oficiales (EBAU/Extraordinarias)."
     },
     "set_dies_abans_nadal": {
       val: "Dins dels 7 dies previs a les vacances de Nadal (restricció normativa GVA).",

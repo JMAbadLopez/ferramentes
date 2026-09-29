@@ -157,8 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <br>
           <p><strong>6. Prohibicions i exclusions expresses:</strong></p>
           <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
-            <li>Durant els <strong>15 primers dies lectius</strong> del curs (del 9 al 29 de setembre de 2026).</li>
-            <li>Durant els <strong>15 últims dies lectius</strong> del curs (del 31 de maig al 18 de juny de 2027).</li>
+            <li>Durant els <strong>7 primers dies lectius</strong> del curs (del 9 al 17 de setembre de 2026).</li>
+            <li>Durant els <strong>7 últims dies lectius</strong> del curs (del 10 al 18 de juny de 2027).</li>
             <li>En el període de <strong>7 dies abans o després de les vacances</strong> de Nadal, Falles, Pasqua i Sant Joan.</li>
             <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions del centre per a FP o ESO/Batxillerat), ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
             <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       faqQ2: "Per què hi ha dies bloquejats diferents entre FP i ESO/Batxillerat?",
       faqA2: "Perquè la normativa de la Conselleria d'Educació prohibeix expressament gaudir de dies moscosos durant els períodes d'avaluacions. Com que les dates de les sessions d'avaluació inicial, 1a, 2a, final i extraordinària dels Cicles Formatius (FPB, Grau Mitjà, Grau Superior, Cursos d'Especialització) no coincideixen exactament amb les d'ESO i Batxillerat, hem incorporat el calendari oficial específic d'avaluacions de l'IES Camp de Morvedre perquè pugues consultar amb total precisió els teus dies hàbils segons les teues etapes educatives.",
       faqQ3: "Puc demanar un moscós lectiu el mes de setembre?",
-      faqA3: "Només a partir del 30 de setembre. Els 15 primers dies lectius amb alumnat (del 9 al 29 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.",
+      faqA3: "A partir del 18 de setembre. Els 7 primers dies lectius amb alumnat (del 9 al 17 de setembre de 2026) estan bloquejats per normativa. Els dies de l'1 al 8 de setembre són període no lectiu, on es podria sol·licitar un dels 3 dies no lectius.",
       faqQ4: "Què passa si dos o més companys del mateix departament demanem el mateix dia?",
       faqA4: "La concessió està condicionada a les necessitats del servei educatiu. Aquest criteri s'actualitzarà pròximament segons l'acord que adopten el Claustre de Professorat i el Consell Escolar del centre.",
       faqQ5: "Sóc interí/na i tinc una vacant o substitució temporal. Quants dies em toquen?",
@@ -272,8 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <br>
           <p><strong>6. Prohibiciones y exclusiones expresas:</strong></p>
           <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
-            <li>Durante los <strong>15 primeros días lectivos</strong> del curso (del 9 al 29 de septiembre de 2026).</li>
-            <li>Durante los <strong>15 últimos días lectivos</strong> del curso (del 31 de mayo al 18 de junio de 2027).</li>
+            <li>Durante los <strong>7 primeros días lectivos</strong> del curso (del 9 al 17 de septiembre de 2026).</li>
+            <li>Durante los <strong>7 últimos días lectivos</strong> del curso (del 10 al 18 de junio de 2027).</li>
             <li>En el período de <strong>7 días antes o después de las vacaciones</strong> de Navidad, Fallas, Pascua y San Juan.</li>
             <li>En <strong>períodos de evaluación</strong> escolares (según el calendario oficial de evaluaciones del centro para FP o ESO/Bachillerato), ni entre la evaluación ordinaria y la extraordinaria de final de curso.</li>
             <li><strong>No se pueden disfrutar de manera consecutiva</strong>.</li>
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
       faqQ2: "¿Por qué hay días bloqueados diferentes entre FP y ESO/Bachillerato?",
       faqA2: "Porque la normativa de la Conselleria de Educación prohíbe expresamente disfrutar de días moscosos durante los períodos de evaluación. Dado que las fechas de las sesiones de evaluación inicial, 1ª, 2ª, final y extraordinaria de los Ciclos Formativos (FPB, Grado Medio, Grado Superior, Cursos de Especialización) no coinciden exactamente con las de ESO y Bachillerato, hemos incorporado el calendario oficial específico de evaluaciones del IES Camp de Morvedre para que puedas consultar con total precisión tus días hábiles según tus etapas educativas.",
       faqQ3: "¿Puedo pedir un moscoso lectivo en el mes de septiembre?",
-      faqA3: "Solo a partir del 30 de septiembre. Los 15 primeros días lectivos con alumnado (del 9 al 29 de septiembre de 2026) están bloqueados por normativa. Los días del 1 al 8 de septiembre son período no lectivo, donde se podría solicitar uno de los 3 días no lectivos.",
+      faqA3: "A partir del 18 de septiembre. Los 7 primeros días lectivos con alumnado (del 9 al 17 de septiembre de 2026) están bloqueados por normativa. Los días del 1 al 8 de septiembre son período no lectivo, donde se podría solicitar uno de los 3 días no lectivos.",
       faqQ4: "¿Qué ocurre si dos o más compañeros del mismo departamento pedimos el mismo día?",
       faqA4: "La concesión está condicionada a las necesidades del servicio educativo. Este criterio se actualizará próximamente según el acuerdo que adopten el Claustro de Profesorado y el Consejo Escolar del centro.",
       faqQ5: "¿Soy interino/a y tengo una vacante o sustitución temporal. ¿Cuántos días me tocan?",
