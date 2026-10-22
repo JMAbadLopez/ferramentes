@@ -60,13 +60,15 @@ Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IE
 
 ## 🚀 Desplegament en GITHUB PAGES
 
-Aquesta web és **100% estàtica (Client-Side)** i està optimitzada per a funcionar immediatament en **GitHub Pages**:
+Aquesta web és **100% estàtica (Client-Side)** i està expressament optimitzada per a funcionar de forma immediata, robusta i sense dependències en **GitHub Pages**:
 
-- **Sense codi de servidor**: Només HTML5, CSS3 i JavaScript natiu (Vanilla JS).
-- **Sense dependències ni compiladors**: No requereix Node.js, ni `npm install`, ni passos de build.
-- **Rutes relatives (`./`)**: Funciona correctament tant a l'arrel d'un domini com sota un subdirectori de repositori (`https://<usuari>.github.io/<nom-repositori>/`).
+- **Fitxer `.nojekyll` inclòs**: Evita que GitHub Pages execute innecessàriament el motor de processament Jekyll, accelerant el desplegament i assegurant que tots els fitxers i scripts es publiquen directament tal qual.
+- **Pàgina d'error `404.html` personalitzada**: Si s'accedeix a una ruta incorrecta o un enllaç trencat, GitHub Pages serveix automàticament aquesta pàgina corporativa amb redirecció automàtica a `index.html`.
+- **Rutes estrictament relatives (`./`)**: Funciona tant a l'arrel d'un domini (`https://<usuari>.github.io/`) com en qualsevol subdirectori de projecte (`https://<usuari>.github.io/<repositori>/`).
+- **Sense codi de servidor**: Només HTML5 semàntic, CSS3 natiu i Vanilla JS modern.
+- **Zero dependències externes**: Sense crides a CDNs de tercers (com ara fonts o icones externes) que puguen fallar en xarxes escolars protegides o amb tallafocs.
 - **Sense codi insegur ni bloquejant**: Notificacions basades en interfície integrada (*toasts* no bloquejants), sense crides a `alert()`, `confirm()` o APIs no permeses en entorns aïllats o iframes educatius (Moodle, Aules, Teams).
-- **Emmagatzematge aïllat**: Protegit amb control d'errors per si l'usuari navega en mode d'incògnit o té restringides les galetes de tercers.
+- **Emmagatzematge aïllat resilient (`safeStorage`)**: Protegit amb control d'errors per si l'usuari navega en mode d'incògnit o té restringides les galetes de tercers.
 
 ### Passos per activar GitHub Pages:
 1. Puja aquest repositori a GitHub.
@@ -81,7 +83,9 @@ Aquesta web és **100% estàtica (Client-Side)** i està optimitzada per a funci
 
 ```
 calendario-moscosos/
-├── index.html            # Pàgina principal amb vista anual i bilingüe
+├── .nojekyll             # Indicador per a GitHub Pages (desactiva Jekyll i acelera la publicació)
+├── 404.html              # Pàgina 404 personalitzada amb redirecció automàtica al calendari
+├── index.html            # Pàgina principal amb vista anual, selector de perfils i bilingüe
 ├── css/
 │   └── styles.css        # Estils corporatius IES Camp de Morvedre i disseny responsive
 ├── js/
