@@ -1,26 +1,28 @@
 # Calendari de Dies Moscosos · IES CAMP DE MORVEDRE (Curs 2026-2027)
 
-Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IES Camp de Morvedre** (Sagunt / Port de Sagunt) la planificació dels seus dies de permís per assumptes particulars ("dies moscosos"), d'acord amb la normativa de la **Conselleria d'Educació de la Generalitat Valenciana (GVA)** (Instrucció 1/2026 de la DG de Personal Docent) i el calendari oficial d'avaluacions del centre.
+Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IES Camp de Morvedre** (Sagunt / Port de Sagunt) la planificació dels seus dies de permís per assumptes particulars ("dies moscosos"), d'acord amb la **Instrucció 1/2026** i la **Resolució de 19 d'octubre de 2026 de la Direcció General de Personal Docent (GVA)** i el calendari oficial d'avaluacions del centre.
 
 ---
 
-## 📌 Característiques Principals
+## Característiques Principals
 
 1. **Calendari Anual Docent (Curs 2026-2027)**:
-   - **Vista anual completa i neta**: Els 10 mesos del curs escolar a la vista (setembre a juny/juliol), adaptable a qualsevol pantalla (ordinador, tauleta o mòbil).
-   - **Separació de perfils docents**: Commuta entre `🎓 ESO i Batxillerat` i `⚙️ Formació Professional (FP)`. Les dates d'avaluació inicial, 1a, 2a, final i extraordinàries s'adapten fidelment al calendari oficial de l'IES Camp de Morvedre.
+   - **Vista anual completa, neta i compacta**: Els 10 mesos del curs escolar a la vista (setembre a juny/juliol), amb mides de cel·la i tipografies optimitzades per a una visualització còmoda i sense recarregaments en ordinador, tauleta o mòbil.
+   - **Disseny modern amb icones vectorials SVG**: Sistema d'icones vectorials integrat de manera nativa (sense dependències externes de servidors CDN ni càrregues de tercers), garantint màxima compatibilitat, rapidesa i aspecte professional.
+   - **Separació de perfils docents**: Commuta entre perfils d'ESO/Batxillerat i Formació Professional (FP). Les dates d'avaluació inicial, 1a, 2a, final i extraordinàries s'adapten fidelment al calendari oficial de l'IES Camp de Morvedre.
    - **Codi de colors semàfor**:
-     - 🟢 **Verd**: Dia lectiu disponible per a demanar moscós lectiu.
-     - 🔴 **Roig**: Dia bloquejat per normativa (7 primers/últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles, Pasqua i Sant Joan, sessions d'avaluació segons perfil).
-     - 🔵 **Blau**: Festius oficials (Festius locals de Sagunt: 7 Desembre, 16, 17 i 18 Març; festius autonòmics i nacionals).
-     - 🟡 **Taronja/Groc**: Períodes no lectius laborals (vàlids per als 3 dies no lectius).
-     - ⚫ **Gris**: Caps de setmana.
+     - Verd: Dia lectiu disponible per a demanar moscós lectiu.
+     - Roig: Dia bloquejat per normativa (7 primers i 7 últims dies lectius, 7 dies al voltant de vacances de Nadal, Falles i Pasqua, sessions d'avaluació segons perfil).
+     - Blau: Festius oficials (Festius locals de Sagunt: 7 Desembre, 16, 17 i 18 Març; festius autonòmics i nacionals).
+     - Taronja/Groc: Períodes no lectius laborals (vàlids per als 3 dies no lectius).
+     - Gris: Caps de setmana.
    - **Filtres ràpids**: Tots els dies, Només disponibles, Dies no lectius, Dies bloquejats, Festius.
 
 2. **Detall i Inspector de Dia (Modal)**:
    - En fer clic a qualsevol dia s'obri un panell amb l'explicació detallada.
    - Si està bloquejat, especifica el motiu exacte de la normativa GVA o avaluació.
-   - Mostra la **finestra de tramitació** (obertura 1 mes abans i data límit recomanada 7 dies naturals abans).
+   - Mostra la **finestra de tramitació** (obertura 1 mes abans, data límit 7 dies naturals abans i **resolució de la Direcció dins dels 6 dies naturals previs**).
+   - Recordatori de gravació obligatòria prèvia en **ITACA** i pla pedagògic a Prefectura d'Estudis.
    - Botó per afegir o eliminar de la selecció personal.
 
 3. **Planificador Personal i Comprovació en Temps Real**:
@@ -32,18 +34,27 @@ Web interactiva i intuïtiva dissenyada per a facilitar al professorat de l'**IE
    - Les preferències es guarden automàticament de manera resilient (`safeStorage`).
 
 4. **Regles de Quota del Centre i Distribució per Torns**:
+   - **Plantilla de referència**: Fixada a data **1 de setembre** de cada curs escolar (Resolució 19/10/2026).
    - **Quota torn de matí**: Màxim **6 docents al dia** (plantilla d'entre 141 i 160 docents).
    - **Quota torn de vesprada (FP)**: Màxim **2 docents al dia** per a garantir la cobertura dels cicles formatius vespertins.
    - **Quota total del centre**: Màxim conjunt de **8 docents al dia** (6 de matí + 2 de vesprada).
-   - Criteris de concurrència: Pendent d'actualització segons l'acord del Claustre i del Consell Escolar.
+   - **Criteris oficials de prelació per concurrència (Resolució 19/10/2026)**:
+     1. Menor nombre de dies moscosos gaudits en el curs escolar actual.
+     2. Major antiguitat en el centre educatiu (se sumen períodes interromputs).
+     3. Major antiguitat en el cos docent (se sumen períodes interromputs).
+     4. Tindre 55 anys o més o reconegut grau de discapacitat ≥ 33%.
+     5. Desempat subsidiari acordat pels òrgans col·legiats del centre (Claustre i Consell Escolar).
 
-5. **Calculadores Específiques**:
-   - **Calculadora de terminis**: Tria qualsevol data i obtén la data límit (7 dies naturals abans) i data d'obertura del termini (1 mes abans).
-   - **Calculadora de proporcionalitat**: Per a personal interí o contractes temporals que s'incorporen durant el curs.
-   - **Taula de quotes per plantilla**: Escala oficial GVA (fins a >81 docents: 5) amb indicació expressa de la quota específica del centre (8 docents: 6 matí + 2 vesprada per a 141-160 docents).
+5. **Calculadores Específiques Adaptades a la Resolució 19/10/2026**:
+   - **Calculadora de terminis**: Tria qualsevol data i obtén la data límit (7 dies naturals abans), obertura del termini (1 mes abans) i termini de resolució de la Direcció (dins dels 6 dies previs).
+   - **Calculadora de proporcionalitat exacta**:
+     - Aplica la fórmula oficial per modalitat: `round(3 · X / 365)`.
+     - Llindars de substitucions: < 61 dies (0 dies), 61-182 dies (1L + 1NL = 2 dies), 183-304 dies (2L + 2NL = 4 dies), ≥ 305 dies (3L + 3NL = 6 dies).
+     - Regla de vacants: 3L + 3NL d'entrada si s'adjudica abans de l'1 de novembre; 2L + 2NL d'entrada a partir de l'1 de novembre.
+   - **Taula de quotes per plantilla**: Escala oficial GVA amb menció de la data de referència (1 de setembre) i especificitat de l'IES Camp de Morvedre.
 
 6. **Bilingüe 100% (Valencià / Castellà)**:
-   - Traducció completa instantània de tota la interfície, incloent calendari, calculadores, normativa i preguntes freqüents (FAQ).
+   - Paritat total de traducció instantània en tota la interfície, incloent calendari, calculadores, normativa i 9 preguntes freqüents (FAQ).
 
 ---
 

@@ -24,6 +24,36 @@ window.MOSCOSO_RULES = {
   QUOTA_MATI_CENTRE: 6,
   QUOTA_VESPRADA_CENTRE: 2,
   QUOTA_TOTAL_CENTRE: 8, // Màxim conjunt centre (6 matí + 2 vesprada)
+  TERMINI_RESOLUCIO_DIES: 6, // Termini màxim de resolució per la direcció: dins dels 6 dies naturals previs a la data (Resolució 19/10/2026)
+
+  // Criteris oficials de prelació per concurrència de sol·licituds (Resolució 19/10/2026)
+  CRITERIS_PRELACIO: [
+    {
+      order: 1,
+      val: "Menor nombre de dies d'assumptes particulars gaudits en el curs actual (prioritat a qui menys n'ha gaudit).",
+      es: "Menor número de días de asuntos particulares disfrutados en el curso actual (prioridad a quien menos haya disfrutado)."
+    },
+    {
+      order: 2,
+      val: "Major antiguitat en el centre educatiu (se sumen períodes interromputs).",
+      es: "Mayor antigüedad en el centro educativo (se suman períodos interrumpidos)."
+    },
+    {
+      order: 3,
+      val: "Major antiguitat en el cos docent (se sumen períodes interromputs).",
+      es: "Mayor antigüedad en el cuerpo docente (se suman períodos interrumpidos)."
+    },
+    {
+      order: 4,
+      val: "Tindre 55 anys o més o tindre reconegut un grau de discapacitat igual o superior al 33%.",
+      es: "Tener 55 años o más o tener reconocido un grado de discapacidad igual o superior al 33%."
+    },
+    {
+      order: 5,
+      val: "Desempat subsidiari: determinat pels òrgans col·legiats del centre (Claustre i Consell Escolar).",
+      es: "Desempate subsidiario: determinado por los órganos colegiados del centro (Claustro y Consejo Escolar)."
+    }
+  ],
 
   // Motius de no disponibilitat amb traducció
   reasons: {
@@ -264,7 +294,17 @@ window.MOSCOSO_RULES = {
 
   /**
    * Calculadora de proporcionalitat per a personal interí o substitucions
-   * Curs complet = 365 dies (1 setembre a 31 agost) = 6 dies (3 lectius + 3 no lectius)
+   * Segons Resolució de 19 d'octubre de 2026 (DG Personal Docent):
+   * Fórmula per a cadascuna de les modalitats (lectius i no lectius):
+   * Dies = round(3 * X / 365), on X és el nombre de dies de serveis prestats en el curs.
+   * Llindars oficials de substitucions:
+   *   - Menys de 61 dies: 0 dies (0 lectius + 0 no lectius)
+   *   - De 61 a 182 dies: 2 dies (1 lectiu + 1 no lectiu)
+   *   - De 183 a 304 dies: 4 dies (2 lectius + 2 no lectius)
+   *   - 305 dies o més: 6 dies (3 lectius + 3 no lectius)
+   * Vacants:
+   *   - Abans de l'1 de novembre: 6 dies (3 lectius + 3 no lectius) d'entrada.
+   *   - A partir de l'1 de novembre: 4 dies (2 lectius + 2 no lectius) d'entrada.
    */
   calculateProportionality: function(startDateStr, endDateStr) {
     const start = new Date(startDateStr + "T00:00:00");
@@ -277,24 +317,35 @@ window.MOSCOSO_RULES = {
     const diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
     const totalYearDays = 365;
 
-    // Càlcul teòric proporcional
-    const ratio = Math.min(1, Math.max(0, diffDays / totalYearDays));
-    const totalDaysRaw = ratio * this.MAX_TOTAL_DIES;
-    
-    // Arredoniment típic administratiu (a l'enter més proper amb mínim)
-    const totalDaysRounded = Math.round(totalDaysRaw);
-    
-    // Repartiment estimat entre lectius i no lectius
-    const lectius = Math.min(this.MAX_DIES_LECTIUS, Math.ceil(totalDaysRounded / 2));
-    const noLectius = Math.max(0, totalDaysRounded - lectius);
+    // Fórmula oficial Resolució 19/10/2026 per a cadascuna de les modalitats (3 dies màxim per modalitat)
+    const rawPerModality = (3 * diffDays) / totalYearDays;
+    const roundedPerModality = Math.min(this.MAX_DIES_LECTIUS, Math.round(rawPerModality));
+
+    const lectius = roundedPerModality;
+    const noLectius = roundedPerModality;
+    const totalMoscosos = lectius + noLectius;
+
+    // Determinació de tram segons dies treballats
+    let bracketKey = "menys_61";
+    if (diffDays >= 305) {
+      bracketKey = "305_mes";
+    } else if (diffDays >= 183) {
+      bracketKey = "183_304";
+    } else if (diffDays >= 61) {
+      bracketKey = "61_182";
+    }
 
     return {
       daysWorked: diffDays,
-      percentage: Math.round(ratio * 100),
-      totalMoscosos: totalDaysRounded,
+      percentage: Math.min(100, Math.round((diffDays / totalYearDays) * 100)),
+      totalMoscosos: totalMoscosos,
       lectius: lectius,
       noLectius: noLectius,
-      rawScore: totalDaysRaw.toFixed(2)
+      rawPerModality: rawPerModality.toFixed(3),
+      bracketKey: bracketKey,
+      // Dades normatives de vacants segons data d'adjudicació
+      vacantAbansNovembre: { lectius: 3, noLectius: 3, total: 6 },
+      vacantDespresNovembre: { lectius: 2, noLectius: 2, total: 4 }
     };
   },
 

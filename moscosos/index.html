@@ -33,13 +33,16 @@
   <nav class="nav-tabs-wrapper no-print">
     <div class="nav-tabs">
       <button type="button" class="nav-tab active" data-target="panel-calendari">
-        <span class="nav-tab-icon">📅</span> <span class="nav-tab-label" data-i18n="tabCalendar">Calendari Anual Docent</span>
+        <span class="nav-tab-icon"><svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        <span class="nav-tab-label" data-i18n="tabCalendar">Calendari Anual Docent</span>
       </button>
       <button type="button" class="nav-tab" data-target="panel-calculadores">
-        <span class="nav-tab-icon">🧮</span> <span class="nav-tab-label" data-i18n="tabCalculators">Calculadores i Terminis</span>
+        <span class="nav-tab-icon"><svg class="ui-icon" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg></span>
+        <span class="nav-tab-label" data-i18n="tabCalculators">Calculadores i Terminis</span>
       </button>
       <button type="button" class="nav-tab" data-target="panel-normativa">
-        <span class="nav-tab-icon">📖</span> <span class="nav-tab-label" data-i18n="tabNormative">Normativa i FAQ</span>
+        <span class="nav-tab-icon"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <span class="nav-tab-label" data-i18n="tabNormative">Normativa i FAQ</span>
       </button>
     </div>
   </nav>
@@ -53,7 +56,9 @@
       <!-- Selector de Perfil Docent (FP vs ESO / Batxillerat) -->
       <div class="profile-selector-card no-print">
         <div class="profile-selector-title">
-          <span style="font-size: 1.5rem;">👥</span>
+          <span class="profile-icon-badge">
+            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
           <div>
             <h3 data-i18n="profileTitle">Perfil docent seleccionat:</h3>
             <p data-i18n="profileSubtitle">Aplica el calendari d'avaluacions oficial de l'IES Camp de Morvedre:</p>
@@ -61,10 +66,12 @@
         </div>
         <div class="profile-buttons">
           <button type="button" class="profile-btn active" data-profile="eso_bat">
-            <span data-i18n="profileEsoBat">🎓 ESO i Batxillerat</span>
+            <svg class="ui-icon ui-icon-btn" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span data-i18n="profileEsoBat">ESO i Batxillerat</span>
           </button>
           <button type="button" class="profile-btn" data-profile="fp">
-            <span data-i18n="profileFp">⚙️ Formació Professional (FP)</span>
+            <svg class="ui-icon ui-icon-btn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="profileFp">Formació Professional (FP)</span>
           </button>
         </div>
       </div>
@@ -72,7 +79,9 @@
       <!-- Banner informatiu -->
       <div class="info-banner no-print">
         <div class="info-banner-content">
-          <div class="info-banner-icon">💡</div>
+          <div class="info-banner-icon">
+            <svg class="ui-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
           <div class="info-banner-text">
             <h3 data-i18n="bannerTitle">Permís per assumptes particulars (Instrucció DG Personal Docent)</h3>
             <p data-i18n="bannerDesc">Fins a 6 dies retribuïts: 3 en període lectiu i 3 en període no lectiu. Antelació: mínim 7 dies naturals i màxim 1 mes.</p>
@@ -138,7 +147,9 @@
         <!-- Calculadora de terminis -->
         <div class="tool-card">
           <div class="tool-card-header">
-            <span class="tool-icon">⏰</span>
+            <span class="tool-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
             <h3 class="tool-title" data-i18n="calcTitle1">Calculadora de Finestra de Sol·licitud</h3>
           </div>
           <p style="font-size: 0.85rem; color: var(--gva-text-muted); margin-bottom: 1rem;" data-i18n="calcDesc1">
@@ -156,7 +167,9 @@
         <!-- Calculadora de proporcionalitat -->
         <div class="tool-card">
           <div class="tool-card-header">
-            <span class="tool-icon">⚖️</span>
+            <span class="tool-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 3v18M6 8l6-5 6 5M3 13l3-5 3 5a3 3 0 0 1-6 0zM15 13l3-5 3 5a3 3 0 0 1-6 0z"/><path d="M4 21h16"/></svg>
+            </span>
             <h3 class="tool-title" data-i18n="calcTitle2">Calculadora de Proporcionalitat (Interins / Substitucions)</h3>
           </div>
           <p style="font-size: 0.85rem; color: var(--gva-text-muted); margin-bottom: 1rem;" data-i18n="calcDesc2">
@@ -181,7 +194,9 @@
       <!-- Contingent de plantilla -->
       <div class="tool-card" style="margin-top: 1.5rem;">
         <div class="tool-card-header">
-          <span class="tool-icon">👥</span>
+          <span class="tool-icon">
+            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
           <h3 class="tool-title" data-i18n="calcTitle3">Taula de Quotes per Plantilla (Ordre Oficial GVA)</h3>
         </div>
         <p style="font-size: 0.9rem; margin-bottom: 1rem;" data-i18n="quotaDesc">
@@ -218,11 +233,18 @@
           </tbody>
         </table>
         <div class="alert-box info" style="margin-top: 1rem;" data-i18n-html="quotaCriteria">
-          <strong>Criteris de prelació en cas de concurrència per al mateix dia:</strong>
-          <p style="margin-top: 0.35rem; color: var(--text-secondary);"><em>S'actualitzarà pròximament segons l'acord que adopten el Claustre de Professorat i el Consell Escolar del centre.</em></p>
+          <strong>Criteris oficials de prelació en cas de concurrència per al mateix dia (Resolució 19/10/2026):</strong>
+          <p style="margin-top: 0.35rem; margin-bottom: 0.35rem;">Quan el nombre de sol·licituds supere la quota màxima autoritzada per al centre o per torn, l'adjudicació s'ordenarà segons els criteris vinculants següents:</p>
+          <ol style="margin-left: 1.25rem; font-size: 0.82rem; line-height: 1.5;">
+            <li><strong>Menor nombre de dies gaudits:</strong> Tindrà prioritat qui haja gaudit de menor nombre de dies d'assumptes particulars en el curs escolar actual.</li>
+            <li><strong>Antiguitat en el centre:</strong> Major temps de serveis prestats a l'IES Camp de Morvedre (se sumen períodes interromputs).</li>
+            <li><strong>Antiguitat en el cos docent:</strong> Major temps de serveis prestats en el cos docent (se sumen períodes interromputs).</li>
+            <li><strong>Edat o discapacitat:</strong> Tindre 55 anys o més, o bé tindre reconegut un grau de discapacitat igual o superior al 33%.</li>
+            <li><strong>Criteri de desempat subsidiari:</strong> Si persisteix l'empat, s'aplicarà el criteri establert pels òrgans col·legiats del centre (Claustre i Consell Escolar).</li>
+          </ol>
         </div>
         <div class="alert-box info" style="margin-top: 0.75rem; border-left: 4px solid var(--brand-teal);" data-i18n-html="quotaTardeNotice">
-          <strong>📍 Quota específica de l'IES Camp de Morvedre (Distribució per torns):</strong> Per a la plantilla del centre (entre 141 i 160 docents) i atenent a l'organització en dos torns lectius, el contingent màxim és de <strong>8 docents al dia</strong>: <strong>6 docents pel torn de matí</strong> i <strong>2 professors/es pel torn de vesprada</strong> (FP). En cap cas podran coincidir més de 2 docents de vesprada el mateix dia.
+          <strong><svg class="ui-icon ui-icon-inline" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Quota específica de l'IES Camp de Morvedre (Distribució per torns):</strong> Per a la plantilla del centre (entre 141 i 160 docents a 1 de setembre) i atenent a l'organització en dos torns lectius, el contingent màxim és de <strong>8 docents al dia</strong>: <strong>6 docents pel torn de matí</strong> i <strong>2 professors/es pel torn de vesprada</strong> (FP). En cap cas podran coincidir més de 2 docents de vesprada el mateix dia.
         </div>
       </div>
     </section>
@@ -232,30 +254,51 @@
       
       <div class="tool-card" style="margin-bottom: 2rem;">
         <div class="tool-card-header">
-          <span class="tool-icon">📜</span>
-          <h3 class="tool-title" data-i18n="normativeSummaryTitle">Resum de la Instrucció de la DG de Personal Docent (GVA)</h3>
+          <span class="tool-icon">
+            <svg class="ui-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </span>
+          <h3 class="tool-title" data-i18n="normativeSummaryTitle">Resum de la Normativa Oficial de Dies Moscosos (Instrucció 1/2026 i Resolució 19/10/2026)</h3>
         </div>
         <div style="font-size: 0.925rem; line-height: 1.7; color: var(--gva-text-main);" data-i18n-html="normativeSummaryBody">
-          <p><strong>1. Concepte i naturalesa:</strong> Permís retribuït per assumptes particulars sense necessitat de justificació. El professorat disposa de fins a <strong>6 dies per curs escolar</strong> (de l'1 de setembre al 31 d'agost de l'any següent), distribuïts en un màxim de <strong>3 dies en període lectiu</strong> i <strong>3 dies en període no lectiu</strong>.</p>
+          <p><strong>1. Concepte i dies màxims:</strong> Permís retribuït per assumptes particulars sense necessitat de justificació. El professorat disposa de fins a <strong>6 dies per curs escolar</strong> (de l'1 de setembre al 31 d'agost de l'any següent), distribuïts en un màxim de <strong>3 dies en període lectiu</strong> i <strong>3 dies en període no lectiu</strong>.</p>
           <br>
-          <p><strong>2. Retribució:</strong> Els sis dies són amb dret íntegre a retribucions.</p>
+          <p><strong>2. Retribució i pla pedagògic inexcusable:</strong> Els sis dies són amb dret íntegre a retribucions. El docent té l'<strong>obligació d'elaborar i deixar dipositat a la Prefectura d'Estudis un pla d'activitats per a l'alumnat</strong> amb antelació per garantir la continuïtat pedagògica.</p>
           <br>
-          <p><strong>3. Condició pedagògica inexcusable:</strong> El docent que obtinga aquest permís té l'<strong>obligació d'elaborar i deixar dipositat un pla d'activitats per a l'alumnat</strong> a la Prefectura d'Estudis per a garantir la continuïtat pedagògica.</p>
+          <p><strong>3. Gravació obligatòria en ITACA (Punt 1 Resolució 19/10/2026):</strong> Totes les sol·licituds i el seu gaudi han de quedar registrats en la plataforma ITACA. El centre educatiu selecciona aquest permís com a «assumptes particulars» per justificar les absències.</p>
           <br>
-          <p><strong>4. Sol·licitud i terminis:</strong> S'ha de presentar davant la Direcció del centre amb una antelació mínima de <strong>7 dies naturals</strong> i una antelació màxima d'<strong>un mes</strong> respecte a la data sol·licitada.</p>
+          <p><strong>4. Sol·licitud i resolució per la Direcció (Punt 2 Resolució 19/10/2026):</strong></p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li><strong>Termini de presentació:</strong> Davant la Direcció amb una antelació mínima de <strong>7 dies naturals</strong> i màxima d'<strong>un mes</strong> respecte a la data sol·licitada.</li>
+            <li><strong>Termini de resolució:</strong> La Direcció del centre emetrà la resolució favorable <strong>dins dels 6 dies naturals previs a la data</strong> d'efecte del permís (per permetre que, en cas de denegació o renúncia, altres companys/es puguen sol·licitar el dia).</li>
+            <li><strong>Motivació i silenci:</strong> La resolució denegatòria serà motivada per raons justificades del servei educatiu. El silenci administratiu té caràcter <strong>desestimatori (negatiu)</strong>.</li>
+          </ul>
           <br>
-          <p><strong>5. Resolució:</strong> Competència exclusiva del Director o Directora de l'institut. El silenci administratiu té caràcter <strong>desestimatori (negatiu)</strong>.</p>
+          <p><strong>5. Plantilla de referència i quotes del centre (Punt 3 Resolució 19/10/2026):</strong> El contingent màxim de docents es determina per la plantilla docent del centre a data <strong>1 de setembre de cada curs escolar</strong>. A l'IES Camp de Morvedre (plantilla entre 141 i 160 docents), la quota és de <strong>8 docents al dia: 6 docents pel torn de matí i 2 professors/es pel torn de vesprada</strong> (FP). En cap cas podran coincidir més de dos docents del torn de vesprada en una mateixa data.</p>
           <br>
-          <p><strong>6. Prohibicions i exclusions expresses:</strong></p>
+          <p><strong>6. Criteris oficials de prelació per concurrència (Punt 4 Resolució 19/10/2026):</strong> Si es supera la quota per a un mateix dia, l'ordre de prioritat vinculant és: 1r Menor nombre de dies moscosos gaudits en el curs; 2n Major antiguitat en el centre; 3r Major antiguitat en el cos docent; 4t Tindre 55 anys o més o discapacitat ≥ 33%; 5è Desempat subsidiari acordat pels òrgans col·legiats del centre.</p>
+          <br>
+          <p><strong>7. Personal interí, vacants i proporcionalitat (Punt 5 Resolució 19/10/2026):</strong></p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li><strong>Fórmula oficial:</strong> Per a cadascuna de les modalitats (lectius i no lectius): <code>round(3 · X / 365)</code>, on X són els dies de servei actiu acumulats en el curs.</li>
+            <li><strong>Vacants adjudicades abans de l'1 de novembre:</strong> 3 dies lectius + 3 no lectius (6 dies d'entrada, gaudi immediat).</li>
+            <li><strong>Vacants adjudicades a partir de l'1 de novembre:</strong> 2 dies lectius + 2 no lectius (4 dies d'entrada; ampliable a 3+3 si s'acredita un còmput global de 305 dies amb substitucions prèvies).</li>
+            <li><strong>Substitucions per dies acumulats:</strong> Menys de 61 dies: 0 dies; de 61 a 182 dies: 2 dies (1 lectiu + 1 no lectiu); de 183 a 304 dies: 4 dies (2 lectius + 2 no lectius); a partir de 305 dies: 6 dies (3 lectius + 3 no lectius).</li>
+          </ul>
+          <br>
+          <p><strong>8. Professorat itinerant, religió i especialistes d'FP (Punts 6, 7 i 8 Resolució 19/10/2026):</strong></p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+            <li><strong>Itinerants:</strong> Se sol·licita a la direcció del centre d'adscripció i requereix el vistiplau de la direcció de l'altre centre compartit si té docència assignada en eixa data.</li>
+            <li><strong>Religió i especialistes/experts de sectors productius d'FP:</strong> Idèntic règim (amb contracte indefinit s'equiparen a funcionaris de carrera, amb contracte temporal s'equiparen a interins amb còmput proporcional).</li>
+          </ul>
+          <br>
+          <p><strong>9. Prohibicions i exclusions expresses:</strong></p>
           <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
             <li>Durant els <strong>7 primers dies lectius</strong> del curs (del 9 al 17 de setembre de 2026).</li>
             <li>Durant els <strong>7 últims dies lectius</strong> del curs (del 10 al 18 de juny de 2027).</li>
-            <li>En el període de <strong>7 dies abans o després de les vacances</strong> de Nadal, Falles, Pasqua i Sant Joan.</li>
-            <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions del centre per a FP o ESO/Batxillerat), ni entre l'avaluació ordinària i l'extraordinària de final de curs.</li>
-            <li><strong>No es poden gaudir de manera consecutiva</strong>.</li>
+            <li>Dins dels <strong>7 dies previs o posteriors a les vacances</strong> escolars de Nadal, Falles i Pasqua.</li>
+            <li>En <strong>períodes d'avaluació</strong> escolars (segons el calendari oficial d'avaluacions d'ESO/Batxillerat o FP), ni entre l'avaluació ordinària i extraordinària de final de curs.</li>
+            <li><strong>No es poden gaudir de manera consecutiva</strong> (tampoc divendres i dilluns).</li>
           </ul>
-          <br>
-          <p><strong>7. Contingent per torns (Matí i Vesprada d'FP):</strong> A l'IES Camp de Morvedre (plantilla d'entre 141 i 160 docents), el contingent màxim és de <strong>6 docents pel torn de matí</strong> i de <strong>2 professors/es pel torn de vesprada</strong>. Per tant, el màxim simultani permès al centre entre ambdós torns és de <strong>8 docents al dia (6 de matí + 2 de vesprada)</strong>. Mai podran coincidir més de dos docents del torn de vesprada en una mateixa data.</p>
         </div>
       </div>
 
@@ -299,7 +342,7 @@
           <span class="faq-toggle-icon">+</span>
         </button>
         <div class="faq-answer" data-i18n-html="faqA4">
-          La concessió està condicionada a les necessitats del servei educatiu. Aquest criteri s'actualitzarà pròximament segons l'acord que adopten el Claustre de Professorat i el Consell Escolar del centre.
+          La concessió està supeditada a les necessitats del servei educatiu. Segons la Resolució de 19 d'octubre de 2026 de la DG de Personal Docent, si es supera la quota màxima s'aplica el següent ordre vinculant de prelació: 1r) Menor nombre de dies moscosos gaudits en el curs actual; 2n) Major antiguitat en el centre; 3r) Major antiguitat en el cos docent; 4t) Tindre 55 anys o més o una discapacitat igual o superior al 33%; 5è) Criteri de desempat fixat pels òrgans col·legiats del centre (Claustre i Consell Escolar).
         </div>
       </div>
 
@@ -309,7 +352,7 @@
           <span class="faq-toggle-icon">+</span>
         </button>
         <div class="faq-answer" data-i18n-html="faqA5">
-          El nombre de dies és estrictament proporcional al temps de servei en el curs escolar. Pots utilitzar la nostra pestanya de <em>Calculadores</em> per a comprovar els teus dies exactes. A més, si cesses i et tornen a nomenar en el mateix curs, conserves els dies pendents de gaudi!
+          Segons la Resolució de 19 d'octubre de 2026, la fórmula oficial per a cadascuna de les modalitats (lectius i no lectius) és: <code>round(3 · X / 365)</code>. Per a substitucions: menys de 61 dies treballats = 0 dies; de 61 a 182 dies = 2 dies (1 lectiu + 1 no lectiu); de 183 a 304 dies = 4 dies (2 lectius + 2 no lectius); a partir de 305 dies = 6 dies (3 lectius + 3 no lectius). A més, si tens una vacant adjudicada abans de l'1 de novembre, et pertoquen directament els 6 dies (3+3); i si s'adjudica a partir de l'1 de novembre, 4 dies (2+2). En cas de successió de nomenaments en el mateix curs escolar, conserves els dies pendents de gaudi!
         </div>
       </div>
 
@@ -330,6 +373,26 @@
         </button>
         <div class="faq-answer" data-i18n-html="faqA7">
           A l'IES Camp de Morvedre s'aplica una distribució diferenciada per torns (plantilla de 141-160 docents): el contingent màxim és de <strong>6 docents pel torn de matí</strong> i de <strong>2 docents pel torn de vesprada</strong>. Per tant, <strong>mai podran gaudir de permís per assumptes particulars més de dos professors o professores del torn de vesprada el mateix dia</strong>, i el total del centre mai podrà superar els <strong>8 docents diaris (6 de matí + 2 de vesprada)</strong>, garantint sempre la correcta atenció educativa.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span data-i18n="faqQ8">Com es tramita la sol·licitud en ITACA i en quin termini ha de resoldre la Direcció?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer" data-i18n-html="faqA8">
+          Segons la Resolució de 19 d'octubre de 2026 (Punts 1 i 2), la sol·licitud i concessió s'ha de gravar obligatòriament en ITACA, seleccionant el permís per «assumptes particulars». La Direcció del centre emetrà la resolució favorable <strong>dins dels 6 dies naturals previs a la data sol·licitada</strong>. Aquest marge de 6 dies garanteix que, si es denega o la persona sol·licitant hi renuncia, altres docents puguen aprofitar la vacant en la quota. Les denegacions han de ser sempre motivades i el silenci té caràcter desestimatori.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span data-i18n="faqQ9">Com s'aplica el permís al professorat itinerant, de religió o especialistes d'FP?</span>
+          <span class="faq-toggle-icon">+</span>
+        </button>
+        <div class="faq-answer" data-i18n-html="faqA9">
+          Segons els punts 6, 7 i 8 de la Resolució de 19 d'octubre de 2026: <strong>1) Docents itinerants:</strong> han de presentar la sol·licitud a la direcció del seu centre d'adscripció i, si el dia sol·licitat tenen jornada lectiva en l'altre centre compartit, caldrà el vistiplau previ d'aquest altre centre; <strong>2) Professorat de religió i persones expertes/especialistes de sectors productius d'FP:</strong> s'aplica el mateix règim que a la resta del personal docent (si tenen contracte indefinit, l'equivalent a funcionaris de carrera; si tenen contracte temporal, l'equivalent a funcionaris interins amb dret proporcional segons la durada del nomenament).
         </div>
       </div>
 
@@ -356,7 +419,7 @@
         </div>
 
         <div class="modal-section">
-          <div class="modal-section-title" data-i18n="modalDeadlinesLabel">Terminis de sol·licitud:</div>
+          <div class="modal-section-title" data-i18n="modalDeadlinesLabel">Terminis de sol·licitud i resolució:</div>
           <div class="timeline-card">
             <div class="timeline-item">
               <div class="timeline-label" data-i18n="modalEarliestLabel">Obertura de sol·licitud (1 mes abans):</div>
@@ -367,9 +430,13 @@
               <div class="timeline-value" id="modalDeadline" style="color: #b91c1c;">--/--/----</div>
             </div>
           </div>
+          <p style="font-size: 0.75rem; color: var(--gva-text-muted); margin-top: 0.35rem; line-height: 1.35;" data-i18n="modalResolutionNote">
+            * La Direcció resoldrà dins dels 6 dies naturals previs a la data. Tramitació i gravació prèvia en ITACA.
+          </p>
         </div>
 
         <div class="alert-box info" style="margin-top: 1rem; font-size: 0.85rem;">
+          <svg class="ui-icon ui-icon-inline" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <span data-i18n="modalPlanNotice">Recordatori: És obligatori deixar un pla d'activitats per a l'alumnat a Prefectura d'Estudis.</span>
         </div>
       </div>
